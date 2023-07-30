@@ -31,6 +31,9 @@ namespace Kuleli.Shop.Domain.Entities
         // Müsterinin birden fazla siparisi olabileceği icin NP kullanıldı..
         public ICollection<Order> Orders { get; set; }
 
+        public ICollection<Address> Addresses { get; set; }
+        public ICollection<ProductComment> ProductComments { get; set; }
+
     }
 
     public enum Gender

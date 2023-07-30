@@ -25,5 +25,7 @@ namespace Kuleli.Shop.Domain.Entities
         // Bir urunun birden fazla alicisi olabilir..!!
         public ICollection<OrderDetail> OrderDetails { get; set; }
 
+        public ICollection<ProductComment> ProductComments { get; set; }
+
     }
 }
