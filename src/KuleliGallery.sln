@@ -13,11 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kuleli.Shop.Application", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kuleli.Shop.Infrastructure", "Kuleli.Shop.Infrastructure\Kuleli.Shop.Infrastructure.csproj", "{0660745D-EC60-4BEE-BA7B-4AEE782CBAC3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kuleli.Shop.Persistance(Data)", "Kuleli.Shop.Persistance\Kuleli.Shop.Persistance(Data).csproj", "{8572A766-27A6-4D57-9220-E186F4820343}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kuleli.Shop.Persistance", "Kuleli.Shop.Persistance\Kuleli.Shop.Persistance.csproj", "{8572A766-27A6-4D57-9220-E186F4820343}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kuleli.Shop.Api", "Kuleli.Shop.Api\Kuleli.Shop.Api.csproj", "{7B3E8F5F-2143-4FC5-AEB7-9203BF031236}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kuleli.Shop.Domain", "Kuleli.Shop.Domain\Kuleli.Shop.Domain.csproj", "{921F5B83-24B9-4208-86DA-80FD2A07D075}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kuleli.Shop.Domain", "Kuleli.Shop.Domain\Kuleli.Shop.Domain.csproj", "{921F5B83-24B9-4208-86DA-80FD2A07D075}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
