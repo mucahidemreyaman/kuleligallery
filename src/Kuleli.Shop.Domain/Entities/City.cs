@@ -6,8 +6,7 @@ namespace Kuleli.Shop.Domain.Entities
     {
         public string CityName { get; set; }
 
-        public ICollection<Address> Addresses { get; set; }
-
+     
     }
 
 }
