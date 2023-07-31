@@ -13,9 +13,11 @@ namespace Kuleli.Shop.Domain.Entities
 
         public int CustomerId { get; set; }
 
+        public string Detail { get; set; }
+
         public int LikeCount { get; set; }
-        public int DislikeCount { get; set; }
-        public bool IsActive { get; set; }
+        public int DisLikeCount { get; set; }
+        public bool? IsApproved { get; set; }
 
         public Product Product { get; set; }
         public Customer Customer { get; set; }

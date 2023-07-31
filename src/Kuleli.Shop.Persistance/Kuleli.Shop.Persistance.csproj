@@ -8,12 +8,16 @@
 
   <ItemGroup>
     <Folder Include="Context\" />
-    <Folder Include="Mapping\" />
     <Folder Include="Repositories\UWork\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Kuleli.Shop.Domain\Kuleli.Shop.Domain.csproj" />
   </ItemGroup>
 
 </Project>

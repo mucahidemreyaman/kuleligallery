@@ -4,14 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Kuleli.Shop.Persistance.Mapping
 {
-    public class AccountMapping : IEntityTypeConfiguration<Account>
+    public class AccountMapping : BaseEntityMapping<Account>
     {
-        public void Configure(EntityTypeBuilder<Account> builder)
+       
+
+        public override void ConfigureDerivedEntityMapping(EntityTypeBuilder<Account> builder)
         {
-            builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id)
-                .HasColumnName("ID")
-                .HasColumnOrder(1);
 
             builder.Property(x => x.CustomerId)
                .HasColumnName("CUSTOMER_ID")
@@ -38,19 +36,9 @@ namespace Kuleli.Shop.Persistance.Mapping
                 .HasColumnName("LAST_USER_IP")
                 .HasColumnOrder(6);
 
-            builder.Property(x => x.IsDeleted)
-                .HasColumnName("IS_DELETED")
-                .HasDefaultValueSql("0");
-
-
             builder.HasOne(x => x.Customer)
                 .WithOne(x => x.Account);
-
-
-
         }
-
-
     }
 
 }
