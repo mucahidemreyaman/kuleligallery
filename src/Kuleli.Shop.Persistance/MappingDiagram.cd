@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Kuleli.Shop.Persistance.Mapping.AuditableEntityMapping&lt;T&gt;">
-    <Position X="5.5" Y="0.5" Width="1.5" />
+    <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
       <FileName>Mapping\AuditableEntityMapping.cs</FileName>
@@ -9,7 +9,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Kuleli.Shop.Persistance.Mapping.BaseEntityMapping&lt;T&gt;">
-    <Position X="9.5" Y="0.5" Width="1.5" />
+    <Position X="23.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
       <FileName>Mapping\BaseEntityMapping.cs</FileName>
@@ -17,17 +17,73 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Kuleli.Shop.Persistance.Mapping.AccountMapping">
-    <Position X="13.5" Y="2.75" Width="2.5" />
+    <Position X="23" Y="4.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
       <FileName>Mapping\AccountMapping.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Kuleli.Shop.Persistance.Mapping.CategoryMapping">
-    <Position X="1" Y="2.5" Width="2.25" />
+    <Position X="0.5" Y="2.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
       <FileName>Mapping\CategoryMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kuleli.Shop.Persistance.Mapping.ProductCommentMapping" Collapsed="true">
+    <Position X="3" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mapping\ProductCommentMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kuleli.Shop.Persistance.Mapping.CustomerMapping" Collapsed="true">
+    <Position X="9.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mapping\CustomerMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kuleli.Shop.Persistance.Mapping.AddressMapping" Collapsed="true">
+    <Position X="20.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mapping\AddressMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kuleli.Shop.Persistance.Mapping.CityMapping" Collapsed="true">
+    <Position X="15.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mapping\CityMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kuleli.Shop.Persistance.Mapping.OrderMapping" Collapsed="true">
+    <Position X="4" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mapping\OrderMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kuleli.Shop.Persistance.Mapping.OrderDetailMapping" Collapsed="true">
+    <Position X="5.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mapping\OrderDetailMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kuleli.Shop.Persistance.Mapping.ProductImageMapping" Collapsed="true">
+    <Position X="11.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mapping\ProductImageMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kuleli.Shop.Persistance.Mapping.ProductMapping" Collapsed="true">
+    <Position X="7.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mapping\ProductMapping.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

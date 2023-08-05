@@ -14,7 +14,7 @@ namespace Kuleli.Shop.Domain.Entities
 
         public int UnitPrice { get; set; }
 
-        public string ThumbnailImage { get; set; }
+     
 
         // Navigation Property uyguladım..!
 

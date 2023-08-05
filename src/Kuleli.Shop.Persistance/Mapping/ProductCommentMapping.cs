@@ -38,6 +38,15 @@ namespace Kuleli.Shop.Persistance.Mapping
             .HasDefaultValueSql("0")
             .HasColumnOrder(7);
 
+            builder.HasOne(x => x.Product)
+                .WithMany(x => x.ProductComments)
+                .HasForeignKey(x => x.Product.Id)
+                .HasConstraintName("COOMENT_PRODUCT_PRODUCT_ID");
+
+            builder.HasOne(x => x.Customer)
+                .WithMany(x => x.ProductComments)
+                .HasForeignKey(x => x.CustomerId)
+                .HasConstraintName("COMMENT_CUSTOMER_CUSTOMER_ID");
 
         }
     }

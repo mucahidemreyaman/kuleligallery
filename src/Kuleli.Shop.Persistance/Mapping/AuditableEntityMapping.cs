@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Kuleli.Shop.Persistance.Mapping
 {
-    public abstract class AuditableEntityMapping<T> : IEntityTypeConfigurationAuditableEntityMapping<T> where T : AuditableEntity
+    public abstract class AuditableEntityMapping<T> : IEntityTypeConfiguration<T> where T : AuditableEntity
     {
 
         public abstract void ConfigureDerivedEntityMapping(EntityTypeBuilder<T> builder);

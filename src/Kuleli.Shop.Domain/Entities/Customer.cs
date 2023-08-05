@@ -11,19 +11,19 @@ namespace Kuleli.Shop.Domain.Entities
 
         public string Surname { get; set; }
 
-        public int Age { get; set; }
-
         public DateTime Birthday { get; set; }
 
         public Gender Gender { get; set; }
+
+        public int CityId { get; set; }
 
         public string Email { get; set; }
 
         public string Phone { get; set; }
 
-        public string Address { get; set; }
+       
 
-        public string City { get; set; }
+     
 
         //Sadece Üyelerin Siparis verebilmesini sağlamak icin account sınıfına iliski kurmak icin Navigation Property kullandım..
         public Account Account { get; set; }
@@ -32,6 +32,8 @@ namespace Kuleli.Shop.Domain.Entities
         public ICollection<Order> Orders { get; set; }
     
         public ICollection<ProductComment> ProductComments { get; set; }
+
+        public City City { get; set; }
 
     } 
 

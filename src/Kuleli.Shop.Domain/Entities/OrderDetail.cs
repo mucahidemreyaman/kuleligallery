@@ -6,17 +6,15 @@ namespace Kuleli.Shop.Domain.Entities
     {
         public int OrderId { get; set; }
 
-        public int ProducId { get; set; }
+        public int ProductId { get; set; }
 
-        public int Quantity { get; set; }
+        public int Quantity { get; set; }       
 
-        public int? DiscountId { get; set; }
+        public decimal TotalPrice { get; set; }
 
-        public decimal LastPrice { get; set; }
+        public Order Order { get; set; }
 
-        public Order Orders { get; set; }
-
-        public Product Products { get; set; }
+        public Product Product { get; set; }
 
 
     }
