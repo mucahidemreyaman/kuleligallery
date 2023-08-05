@@ -39,7 +39,10 @@ namespace Kuleli.Shop.Persistance.Mapping
             builder.HasOne(x => x.Category)
                 .WithMany(x => x.Products)
                 .HasForeignKey(x => x.CategoryId)
-                .HasConstraintName("PRODUCT_CATEGORY_CATEGORY_ID");                 
+                .HasConstraintName("PRODUCT_CATEGORY_CATEGORY_ID");
+
+            builder.ToTable("PRODUCTS");
+
 
         }
     }

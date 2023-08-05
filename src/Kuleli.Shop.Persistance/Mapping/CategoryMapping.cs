@@ -14,6 +14,9 @@ namespace Kuleli.Shop.Persistance.Mapping
                 .HasColumnType("nvarchar(100)")
                 .HasColumnName("NAME")
                 .HasColumnOrder(2);
+
+            builder.ToTable("CATEGORY");
+
         }
     }
 }

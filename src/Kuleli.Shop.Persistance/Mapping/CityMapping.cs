@@ -19,6 +19,8 @@ namespace Kuleli.Shop.Persistance.Mapping
                 .HasColumnType("nvarchar(20)")
                 .HasColumnOrder(2);
 
+            builder.ToTable("CITIES");
+
         }
     }
 }

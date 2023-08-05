@@ -48,6 +48,9 @@ namespace Kuleli.Shop.Persistance.Mapping
                 .HasForeignKey(x => x.CustomerId)
                 .HasConstraintName("COMMENT_CUSTOMER_CUSTOMER_ID");
 
+            builder.ToTable("PRODUCT_COMMENTS");
+
+
         }
     }
 }

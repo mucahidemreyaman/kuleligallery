@@ -35,6 +35,8 @@ namespace Kuleli.Shop.Persistance.Mapping
                .HasForeignKey(x => x.ProductId)
                .HasConstraintName("ORDER_DETAILS_PRODUCT_PRODUCT_ID");
 
+            builder.ToTable("ORDER_DETAILS");
+
         }
     }
 }
