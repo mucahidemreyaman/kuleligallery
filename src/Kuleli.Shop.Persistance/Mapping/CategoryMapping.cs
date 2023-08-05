@@ -15,7 +15,7 @@ namespace Kuleli.Shop.Persistance.Mapping
                 .HasColumnName("NAME")
                 .HasColumnOrder(2);
 
-            builder.ToTable("CATEGORY");
+            builder.ToTable("CATEGORIES");
 
         }
     }

@@ -51,6 +51,8 @@ namespace Kuleli.Shop.Persistance.Mapping
             builder.ToTable("PRODUCT_COMMENTS");
 
 
+
+
         }
     }
 }

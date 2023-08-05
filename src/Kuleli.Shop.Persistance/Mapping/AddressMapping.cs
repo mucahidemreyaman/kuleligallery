@@ -27,7 +27,7 @@ namespace Kuleli.Shop.Persistance.Mapping
                 .HasForeignKey(x => x.CityId)
                 .HasConstraintName("ADDRESS_CITY_CITY_ID");
 
-            builder.ToTable("ADDRESS");
+            builder.ToTable("ADDRESSES");
 
 
 
