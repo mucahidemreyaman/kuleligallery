@@ -6,7 +6,7 @@ using Microsoft.Extensions.Options;
 
 namespace Kuleli.Shop.Persistance.Context
 {
-    partial class KuleliGalleryContext : DbContext
+    public class KuleliGalleryContext : DbContext
     {
         public KuleliGalleryContext(DbContextOptions<KuleliGalleryContext> options) : base(options) { }
 
@@ -44,6 +44,9 @@ namespace Kuleli.Shop.Persistance.Context
 
         public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
         {
+
+            // Herhangi bir kayıt isleminde yapilan islem ekleme ise CreateDate ve CreatedBy bilgileri otomatik olarak set edilir.
+            // Herhangi bir kayıt isleminde yapilan islem guncelleme ise ModifiedDate ve ModifiedBy bilgileri otomatik olarak set edilir.
             foreach (var entry in ChangeTracker.Entries<AuditableEntity>().ToList())
             {
                 switch (entry.State)
@@ -54,6 +57,8 @@ namespace Kuleli.Shop.Persistance.Context
                         entry.Entity.ModifiedBy = "admin";
                         break;
 
+
+                         // insert
                     case EntityState.Added:
                         entry.Entity.CreateDate = DateTime.Now;
                         entry.Entity.CreatedBy = "admin";
