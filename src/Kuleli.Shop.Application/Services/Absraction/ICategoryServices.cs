@@ -11,18 +11,18 @@ namespace Kuleli.Shop.Application.Services.Absraction
         #region Select 
         //Tum kategorileri getirme islemini yapmak icin bu komutları kullanırız..
 
-        List<CategoryDto> GetAllCategories();
-        CategoryDto GetCategoryById(int id);
+        Task<List<CategoryDto>> GetAllCategories();
+        Task<CategoryDto> GetCategoryById(int id);
 
         #endregion
 
         #region Insert, Update, Delete
 
-        int CreateCategory(CreateCategoryViewModel createCategoryViewModel);
+        Task<int> CreateCategory(CreateCategoryViewModel createCategoryViewModel);
 
-        int UpdateCategory(UpdateCategoryVievModel updateCategoryVievModel);
+        Task<int> UpdateCategory(UpdateCategoryVievModel updateCategoryVievModel);
 
-        int DeleteCategory(int id);
+        Task<int> DeleteCategory(int id);
 
         //Delete islemini yapmak icin model olusturmamiza gerek yoktur. Sadece categorynin idsi yeterli olur.!!!
         #endregion

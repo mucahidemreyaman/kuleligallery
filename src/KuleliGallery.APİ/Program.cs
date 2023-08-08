@@ -1,3 +1,9 @@
+using Kuleli.Shop.Application.Services.Absraction;
+using Kuleli.Shop.Application.Services.Implementation;
+using Kuleli.Shop.Domain.Entities;
+using Kuleli.Shop.Persistance.Context;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +12,12 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<KuleliGalleryContext>(opt =>
+{
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("KuleliConnection"));
+});
+//Business Service Registiration
+builder.Services.AddScoped<ICategoryServices, CategoryService>();
 
 var app = builder.Build();
 
