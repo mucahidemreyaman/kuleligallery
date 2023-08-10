@@ -9,8 +9,7 @@ namespace Kuleli.Shop.Persistance.Mapping
         public override void ConfigureDerivedEntityMapping(EntityTypeBuilder<ProductComment> builder)
         {
             builder.Property(x => x.ProductId)
-                   .IsRequired()
-                   .HasColumnType("nvarchar(100)")
+                   .IsRequired()                   
                    .HasColumnName("PRODUCT_ID")
                    .HasColumnOrder(2);
 
@@ -41,7 +40,8 @@ namespace Kuleli.Shop.Persistance.Mapping
             builder.HasOne(x => x.Product)
                 .WithMany(x => x.ProductComments)
                 .HasForeignKey(x => x.ProductId)
-                .HasConstraintName("COOMENT_PRODUCT_PRODUCT_ID");
+                .HasConstraintName("COMMENT_PRODUCT_PRODUCT_ID")
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(x => x.Customer)
                 .WithMany(x => x.ProductComments)

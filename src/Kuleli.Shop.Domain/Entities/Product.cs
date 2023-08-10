@@ -13,7 +13,6 @@ namespace Kuleli.Shop.Domain.Entities
         public int UnitInStock { get; set; }
 
         public int UnitPrice { get; set; }
-
      
 
         // Navigation Property uyguladım..!

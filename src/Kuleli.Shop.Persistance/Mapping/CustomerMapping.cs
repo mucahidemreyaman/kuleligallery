@@ -57,7 +57,8 @@ namespace Kuleli.Shop.Persistance.Mapping
             builder.HasOne(x => x.Account)
                 .WithOne(x=>x.Customer)
                 .HasForeignKey<Customer>(x=>x.AccountId)
-                .HasConstraintName("CUSTOMER_ACCOUNT_ACCOUNT_ID");
+                .HasConstraintName("CUSTOMER_ACCOUNT_ACCOUNT_ID")
+                .OnDelete(DeleteBehavior.Restrict);
 
 
             builder.HasOne(x => x.City)

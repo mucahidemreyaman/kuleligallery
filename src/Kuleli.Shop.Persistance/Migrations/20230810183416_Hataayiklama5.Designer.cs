@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kuleli.Shop.Persistance.Migrations
 {
     [DbContext(typeof(KuleliGalleryContext))]
-    [Migration("20230810180940_Hataayiklama2")]
-    partial class Hataayiklama2
+    [Migration("20230810183416_Hataayiklama5")]
+    partial class Hataayiklama5
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -571,9 +571,8 @@ namespace Kuleli.Shop.Persistance.Migrations
                         .HasColumnName("MODIFIED_DATE")
                         .HasColumnOrder(28);
 
-                    b.Property<string>("ProductId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int")
                         .HasColumnName("PRODUCT_ID")
                         .HasColumnOrder(2);
 
@@ -671,7 +670,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                     b.HasOne("Kuleli.Shop.Domain.Entities.Account", "Account")
                         .WithOne("Customer")
                         .HasForeignKey("Kuleli.Shop.Domain.Entities.Customer", "AccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("CUSTOMER_ACCOUNT_ACCOUNT_ID");
 
@@ -699,7 +698,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                     b.HasOne("Kuleli.Shop.Domain.Entities.Customer", "Customer")
                         .WithMany("Orders")
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("ORDERS_CUSTOMER_CUSTOMER_ID");
 
@@ -713,7 +712,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                     b.HasOne("Kuleli.Shop.Domain.Entities.Order", "Order")
                         .WithMany("OrderDetails")
                         .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("ORDER_DETAILS_ORDER_ORDER_ID");
 
@@ -753,9 +752,9 @@ namespace Kuleli.Shop.Persistance.Migrations
                     b.HasOne("Kuleli.Shop.Domain.Entities.Product", "Product")
                         .WithMany("ProductComments")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("COOMENT_PRODUCT_PRODUCT_ID");
+                        .HasConstraintName("COMMENT_PRODUCT_PRODUCT_ID");
 
                     b.Navigation("Customer");
 

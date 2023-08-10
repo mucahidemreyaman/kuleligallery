@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Kuleli.Shop.Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class Hataayiklama : Migration
+    public partial class Hataayiklama5 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -139,7 +139,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                         column: x => x.ACCOUNT_ID,
                         principalTable: "ACCOUNTS",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "CUSTOMER_CITY_CITY_ID",
                         column: x => x.CITY_ID,
@@ -197,15 +197,15 @@ namespace Kuleli.Shop.Persistance.Migrations
                 {
                     table.PrimaryKey("PK_ORDERS", x => x.ID);
                     table.ForeignKey(
+                        name: "ORDERS_CUSTOMER_CUSTOMER_ID",
+                        column: x => x.CUTOMER_ID,
+                        principalTable: "CUSTOMERS",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "ORDER_ADDRESS_ADDRESS_ID",
                         column: x => x.ADDRESS_ID,
                         principalTable: "ADDRESSES",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "ORDER_CUSTOMER_CUSTOMER_ID",
-                        column: x => x.CUTOMER_ID,
-                        principalTable: "CUSTOMERS",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -216,7 +216,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PRODUCT_ID = table.Column<string>(type: "nvarchar(100)", nullable: false),
+                    PRODUCT_ID = table.Column<int>(type: "int", nullable: false),
                     CUSTOMER_ID = table.Column<int>(type: "int", nullable: false),
                     DETAIL = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DISLIKE_COUNT = table.Column<int>(type: "int", nullable: false),
@@ -238,11 +238,11 @@ namespace Kuleli.Shop.Persistance.Migrations
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "COOMENT_PRODUCT_PRODUCT_ID",
+                        name: "COMMENT_PRODUCT_PRODUCT_ID",
                         column: x => x.PRODUCT_ID,
                         principalTable: "PRODUCTS",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -269,7 +269,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                         column: x => x.ORDER_ID,
                         principalTable: "ORDERS",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "ORDER_DETAILS_PRODUCT_PRODUCT_ID",
                         column: x => x.PRODUCT_ID,
@@ -354,10 +354,10 @@ namespace Kuleli.Shop.Persistance.Migrations
                 name: "PRODUCTS");
 
             migrationBuilder.DropTable(
-                name: "ADDRESSES");
+                name: "CUSTOMERS");
 
             migrationBuilder.DropTable(
-                name: "CUSTOMERS");
+                name: "ADDRESSES");
 
             migrationBuilder.DropTable(
                 name: "CATEGORIES");
