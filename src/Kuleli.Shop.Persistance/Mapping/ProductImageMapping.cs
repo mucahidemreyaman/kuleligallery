@@ -24,7 +24,7 @@ namespace Kuleli.Shop.Persistance.Mapping
 
 
             builder.Property(x => x.Order)
-                .HasColumnName("PATH")
+                .HasColumnName("ORDER")
                 .HasColumnType("nvarchar(200)")
                 .HasColumnOrder(4);
 

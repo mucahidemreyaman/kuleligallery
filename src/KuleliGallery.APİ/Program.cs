@@ -1,6 +1,5 @@
 using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Services.Implementation;
-using Kuleli.Shop.Domain.Entities;
 using Kuleli.Shop.Persistance.Context;
 using Microsoft.EntityFrameworkCore;
 

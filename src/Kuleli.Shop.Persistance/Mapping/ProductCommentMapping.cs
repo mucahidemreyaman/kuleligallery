@@ -40,7 +40,7 @@ namespace Kuleli.Shop.Persistance.Mapping
 
             builder.HasOne(x => x.Product)
                 .WithMany(x => x.ProductComments)
-                .HasForeignKey(x => x.Product.Id)
+                .HasForeignKey(x => x.ProductId)
                 .HasConstraintName("COOMENT_PRODUCT_PRODUCT_ID");
 
             builder.HasOne(x => x.Customer)
