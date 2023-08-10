@@ -2,7 +2,7 @@
 
 namespace Kuleli.Shop.Domain.Entities
 {
-    public abstract  class Account : BaseEntity
+    public  class Account : BaseEntity
     {
         public int CustomerId { get; set; } 
         public string UserName { get; set; }
