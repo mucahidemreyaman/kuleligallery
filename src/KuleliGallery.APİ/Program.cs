@@ -1,7 +1,9 @@
+using Kuleli.Shop.Application.AutoMappings;
 using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Services.Implementation;
 using Kuleli.Shop.Persistance.Context;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,9 @@ builder.Services.AddDbContext<KuleliGalleryContext>(opt =>
 });
 //Business Service Registiration
 builder.Services.AddScoped<ICategoryServices, CategoryService>();
+
+//Automapper
+builder.Services.AddAutoMapper(typeof(DomainToDto), typeof(ViewModelToDomain));
 
 var app = builder.Build();
 

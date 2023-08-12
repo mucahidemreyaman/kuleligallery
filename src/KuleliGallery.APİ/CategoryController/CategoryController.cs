@@ -1,4 +1,5 @@
 using Kuleli.Shop.Application.Model.Dtos;
+using Kuleli.Shop.Application.Model.RequestModels;
 using Kuleli.Shop.Application.Services.Absraction;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,11 +20,47 @@ namespace KuleliGallery.APİ.Controllers
         }   
              
 
-        [HttpGet("getAll")]
-        public async Task<List<CategoryDto>> GetAllCategories()
+        [HttpGet("get")]
+        public async Task<ActionResult<List<CategoryDto>>> GetAllCategories()
         {
             var categories = await _categoryServices.GetAllCategories();
-           return categories;
+           return Ok(categories);
+        }
+
+        [HttpGet("get/{id:int}")]
+        public async Task<ActionResult<List<CategoryDto>>> GetAllCategories(int id)
+        {
+            var categories = await _categoryServices.GetCategoryById(new GetCategoryByIdViewModel { Id= id});
+            return Ok(categories);
+        }
+
+        [HttpPost("create")]
+        public async Task<ActionResult<int>> CreateCategory(CreateCategoryViewModel createCategoryViewModel)
+        {
+            var categoryId = await _categoryServices.CreateCategory(createCategoryViewModel);
+            return Ok(categoryId);
+        }
+
+        [HttpPut("update/{id:int}")]
+        public async Task<ActionResult<int>> UpdateCategory(int id, UpdateCategoryVievModel updateCategoryVievModel)
+        {
+
+            //status kodu değştirir
+
+            if(id != updateCategoryVievModel.Id)
+            {
+                return BadRequest();
+            }
+
+            var categoryId = await _categoryServices.UpdateCategory(updateCategoryVievModel);
+            return Ok(categoryId);
+        }
+
+        [HttpDelete("delete/{id:int}")]
+        public async Task<int> DeleteCategory(int id)
+        {
+            var categoryId = await _categoryServices.DeleteCategory(new DeleteCategoryViewModel { Id=id});
+            return categoryId;
         }
     }
 }

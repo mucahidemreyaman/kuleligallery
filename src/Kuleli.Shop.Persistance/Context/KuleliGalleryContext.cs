@@ -2,7 +2,6 @@
 using Kuleli.Shop.Domain.Entities;
 using Kuleli.Shop.Persistance.Mapping;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 namespace Kuleli.Shop.Persistance.Context
 {
@@ -39,6 +38,17 @@ namespace Kuleli.Shop.Persistance.Context
             modelBuilder.ApplyConfiguration(new ProductImageMapping());
 
 
+            // asagidaki entity türleri icin isdeleted bilgisi false olanlarin otomatik olarak filtrelenmesini saglar...!!
+            modelBuilder.Entity<Category>().HasQueryFilter(x=> x.IsDeleted == null || (x.IsDeleted.HasValue && !x.IsDeleted.Value));
+            modelBuilder.Entity<Account>().HasQueryFilter(x => x.IsDeleted == null || (x.IsDeleted.HasValue && !x.IsDeleted.Value));
+            modelBuilder.Entity<City>().HasQueryFilter(x => x.IsDeleted == null || (x.IsDeleted.HasValue && !x.IsDeleted.Value));
+            modelBuilder.Entity<Customer>().HasQueryFilter(x => x.IsDeleted == null || (x.IsDeleted.HasValue && !x.IsDeleted.Value));
+            modelBuilder.Entity<Address>().HasQueryFilter(x => x.IsDeleted == null || (x.IsDeleted.HasValue && !x.IsDeleted.Value));
+            modelBuilder.Entity<Order>().HasQueryFilter(x => x.IsDeleted == null || (x.IsDeleted.HasValue && !x.IsDeleted.Value));
+            modelBuilder.Entity<OrderDetail>().HasQueryFilter(x => x.IsDeleted == null || (x.IsDeleted.HasValue && !x.IsDeleted.Value));
+            modelBuilder.Entity<Product>().HasQueryFilter(x => x.IsDeleted == null || (x.IsDeleted.HasValue && !x.IsDeleted.Value));
+            modelBuilder.Entity<ProductComment>().HasQueryFilter(x => x.IsDeleted == null || (x.IsDeleted.HasValue && !x.IsDeleted.Value));
+            modelBuilder.Entity<ProductImage>().HasQueryFilter(x => x.IsDeleted == null || (x.IsDeleted.HasValue && !x.IsDeleted.Value));
         }
         #endregion
 

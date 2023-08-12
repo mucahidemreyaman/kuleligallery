@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Kuleli.Shop.Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class Hataayiklama5 : Migration
+    public partial class Deneme : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -35,11 +35,11 @@ namespace Kuleli.Shop.Persistance.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NAME = table.Column<string>(type: "nvarchar(100)", nullable: false),
+                    CATEGORY_NAME = table.Column<string>(type: "nvarchar(100)", nullable: false),
                     CREATE_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CREATE_BY = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CREATE_BY = table.Column<string>(type: "nvarchar(10)", nullable: true),
                     MODIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MODIFIED_BY = table.Column<string>(type: "nvarchar(10)", nullable: true),
                     IS_DELETED = table.Column<bool>(type: "bit", nullable: true, defaultValueSql: "0")
                 },
                 constraints: table =>
@@ -73,9 +73,9 @@ namespace Kuleli.Shop.Persistance.Migrations
                     UNIT_IN_STOCK = table.Column<int>(type: "int", nullable: false),
                     UNIT_PRICE = table.Column<int>(type: "int", nullable: false),
                     CREATE_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CREATE_BY = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CREATE_BY = table.Column<string>(type: "nvarchar(10)", nullable: true),
                     MODIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MODIFIED_BY = table.Column<string>(type: "nvarchar(10)", nullable: true),
                     IS_DELETED = table.Column<bool>(type: "bit", nullable: true, defaultValueSql: "0")
                 },
                 constraints: table =>
@@ -126,9 +126,9 @@ namespace Kuleli.Shop.Persistance.Migrations
                     BIRTHDAY = table.Column<DateTime>(type: "datetime2", nullable: false),
                     GENDER = table.Column<int>(type: "int", nullable: false),
                     CREATE_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CREATE_BY = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CREATE_BY = table.Column<string>(type: "nvarchar(10)", nullable: true),
                     MODIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MODIFIED_BY = table.Column<string>(type: "nvarchar(10)", nullable: true),
                     IS_DELETED = table.Column<bool>(type: "bit", nullable: true, defaultValueSql: "0")
                 },
                 constraints: table =>
@@ -159,9 +159,9 @@ namespace Kuleli.Shop.Persistance.Migrations
                     ORDER = table.Column<string>(type: "nvarchar(200)", nullable: false),
                     IS_THUMBNAIL = table.Column<bool>(type: "bit", nullable: true),
                     CREATE_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CREATE_BY = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CREATE_BY = table.Column<string>(type: "nvarchar(10)", nullable: true),
                     MODIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MODIFIED_BY = table.Column<string>(type: "nvarchar(10)", nullable: true),
                     IS_DELETED = table.Column<bool>(type: "bit", nullable: true, defaultValueSql: "0")
                 },
                 constraints: table =>
@@ -187,9 +187,9 @@ namespace Kuleli.Shop.Persistance.Migrations
                     ORDER_STATUS = table.Column<int>(type: "int", nullable: false),
                     DELIVERY_TYPE = table.Column<int>(type: "int", nullable: false),
                     CREATE_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CREATE_BY = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CREATE_BY = table.Column<string>(type: "nvarchar(10)", nullable: true),
                     MODIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MODIFIED_BY = table.Column<string>(type: "nvarchar(10)", nullable: true),
                     IS_DELETED = table.Column<bool>(type: "bit", nullable: true, defaultValueSql: "0"),
                     OrderTime = table.Column<int>(type: "int", nullable: false)
                 },
@@ -222,9 +222,9 @@ namespace Kuleli.Shop.Persistance.Migrations
                     DISLIKE_COUNT = table.Column<int>(type: "int", nullable: false),
                     IS_APPROVED = table.Column<int>(type: "int", nullable: false, defaultValueSql: "0"),
                     CREATE_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CREATE_BY = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CREATE_BY = table.Column<string>(type: "nvarchar(10)", nullable: true),
                     MODIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MODIFIED_BY = table.Column<string>(type: "nvarchar(10)", nullable: true),
                     IS_DELETED = table.Column<bool>(type: "bit", nullable: true, defaultValueSql: "0"),
                     IsApproved = table.Column<bool>(type: "bit", nullable: true)
                 },
@@ -256,9 +256,9 @@ namespace Kuleli.Shop.Persistance.Migrations
                     QUANTITY = table.Column<int>(type: "int", nullable: false),
                     TOTAL_PRICE = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     CREATE_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CREATE_BY = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CREATE_BY = table.Column<string>(type: "nvarchar(10)", nullable: true),
                     MODIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    MODIFIED_BY = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MODIFIED_BY = table.Column<string>(type: "nvarchar(10)", nullable: true),
                     IS_DELETED = table.Column<bool>(type: "bit", nullable: true, defaultValueSql: "0")
                 },
                 constraints: table =>

@@ -123,8 +123,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                         .HasColumnOrder(26);
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("nvarchar(10)")
                         .HasColumnName("CREATE_BY")
                         .HasColumnOrder(27);
 
@@ -136,8 +135,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                         .HasDefaultValueSql("0");
 
                     b.Property<string>("ModifiedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("nvarchar(10)")
                         .HasColumnName("MODIFIED_BY")
                         .HasColumnOrder(29);
 
@@ -149,7 +147,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(100)")
-                        .HasColumnName("NAME")
+                        .HasColumnName("CATEGORY_NAME")
                         .HasColumnOrder(2);
 
                     b.HasKey("Id");
@@ -216,8 +214,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                         .HasColumnOrder(26);
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("nvarchar(10)")
                         .HasColumnName("CREATE_BY")
                         .HasColumnOrder(27);
 
@@ -246,8 +243,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                         .HasDefaultValueSql("0");
 
                     b.Property<string>("ModifiedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("nvarchar(10)")
                         .HasColumnName("MODIFIED_BY")
                         .HasColumnOrder(29);
 
@@ -305,8 +301,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                         .HasColumnOrder(26);
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("nvarchar(10)")
                         .HasColumnName("CREATE_BY")
                         .HasColumnOrder(27);
 
@@ -328,8 +323,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                         .HasDefaultValueSql("0");
 
                     b.Property<string>("ModifiedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("nvarchar(10)")
                         .HasColumnName("MODIFIED_BY")
                         .HasColumnOrder(29);
 
@@ -378,8 +372,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                         .HasColumnOrder(26);
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("nvarchar(10)")
                         .HasColumnName("CREATE_BY")
                         .HasColumnOrder(27);
 
@@ -391,8 +384,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                         .HasDefaultValueSql("0");
 
                     b.Property<string>("ModifiedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("nvarchar(10)")
                         .HasColumnName("MODIFIED_BY")
                         .HasColumnOrder(29);
 
@@ -451,8 +443,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                         .HasColumnOrder(26);
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("nvarchar(10)")
                         .HasColumnName("CREATE_BY")
                         .HasColumnOrder(27);
 
@@ -464,8 +455,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                         .HasDefaultValueSql("0");
 
                     b.Property<string>("ModifiedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("nvarchar(10)")
                         .HasColumnName("MODIFIED_BY")
                         .HasColumnOrder(29);
 
@@ -519,8 +509,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                         .HasColumnOrder(26);
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("nvarchar(10)")
                         .HasColumnName("CREATE_BY")
                         .HasColumnOrder(27);
 
@@ -558,8 +547,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                         .HasDefaultValueSql("0");
 
                     b.Property<string>("ModifiedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("nvarchar(10)")
                         .HasColumnName("MODIFIED_BY")
                         .HasColumnOrder(29);
 
@@ -598,8 +586,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                         .HasColumnOrder(26);
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("nvarchar(10)")
                         .HasColumnName("CREATE_BY")
                         .HasColumnOrder(27);
 
@@ -616,8 +603,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                         .HasColumnOrder(5);
 
                     b.Property<string>("ModifiedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("nvarchar(10)")
                         .HasColumnName("MODIFIED_BY")
                         .HasColumnOrder(29);
 
