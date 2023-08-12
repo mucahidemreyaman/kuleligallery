@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Kuleli.Shop.Application.Model.Dtos;
 using Kuleli.Shop.Application.Model.RequestModels;
@@ -46,7 +46,7 @@ namespace Kuleli.Shop.Application.Services.Implementation
             var categoryExists = await _context.Categories.AnyAsync(x => x.Id == getCategoryByIdViewModel.Id);
             if (!categoryExists)
             {
-                throw new Exception($"NUMARALI KATEGORI BULUNAMADI");
+                throw new Exception($"{getCategoryByIdViewModel.Id} NUMARALI KATEGORI BULUNAMADI!");
             }
             var categoryDto = await _context.Categories.ProjectTo<CategoryDto>(_mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync(x => x.Id == getCategoryByIdViewModel.Id);

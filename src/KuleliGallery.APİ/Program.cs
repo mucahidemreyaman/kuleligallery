@@ -2,6 +2,7 @@ using Kuleli.Shop.Application.AutoMappings;
 using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Services.Implementation;
 using Kuleli.Shop.Persistance.Context;
+using KuleliGallery.APÝ.Filters;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -9,7 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(opt =>
+{
+    opt.Filters.Add(new ExceptionHandlerFilter());
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
