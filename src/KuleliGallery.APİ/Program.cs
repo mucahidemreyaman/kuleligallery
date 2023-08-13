@@ -6,7 +6,7 @@ using Kuleli.Shop.Application.Validators.Categories;
 using Kuleli.Shop.Persistance.Context;
 using KuleliGallery.APÝ.Filters;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +31,11 @@ builder.Services.AddAutoMapper(typeof(DomainToDto), typeof(ViewModelToDomain));
 
 //FluentValidation istekte gonderilen modele ait propertylerin istenen formatta destekleyip desteklemediðini anlamamýzý saðlar.
 builder.Services.AddValidatorsFromAssemblyContaining(typeof(CreateCategoryValidator));
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Seq("http://localhost:5341")
+    .MinimumLevel.Information()
+    .CreateLogger();
 
 var app = builder.Build();
 

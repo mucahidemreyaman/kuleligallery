@@ -1,6 +1,5 @@
 ﻿ using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using FluentValidation;
 using Kuleli.Shop.Application.Exceptions;
 using Kuleli.Shop.Application.Model.Dtos;
 using Kuleli.Shop.Application.Model.RequestModels;
@@ -10,6 +9,7 @@ using Kuleli.Shop.Application.Wrapper;
 using Kuleli.Shop.Domain.Entities;
 using Kuleli.Shop.Persistance.Context;
 using Microsoft.EntityFrameworkCore;
+using Kuleli.Shop.Application.Behaviors;
 
 namespace Kuleli.Shop.Application.Services.Implementation
 {
@@ -39,7 +39,9 @@ namespace Kuleli.Shop.Application.Services.Implementation
             return result;
         }
 
-        public async Task<Result<CategoryDto>> GetCategoryById(GetCategoryByIdViewModel getCategoryByIdViewModel)
+
+        [ValidationBehavior(typeof(GetCategoryByIdValidator))]
+        public async Task<Result<CategoryDto>> GetCategoryById(GetCategoryByIdViewModel getCategoryByIdViewModel)                    
         {
             //var categoryEntity = await _context.Categories.FindAsync(id);
             //var categoryDto = new CategoryDto
@@ -50,15 +52,7 @@ namespace Kuleli.Shop.Application.Services.Implementation
             //};
             var result = new Result<CategoryDto>();
 
-            //Request model dogrulaması
-
-            var validator = new GetCategoryByIdValidator();
-            var validationResult = validator.Validate(getCategoryByIdViewModel);
-
-            if(!validationResult.IsValid) 
-            {
-                throw new ValidateException(validationResult);
-            }
+           
 
             var categoryExists = await _context.Categories.AnyAsync(x => x.Id == getCategoryByIdViewModel.Id);
             if (!categoryExists)
@@ -72,6 +66,8 @@ namespace Kuleli.Shop.Application.Services.Implementation
             return result;
         }
 
+
+        [ValidationBehavior(typeof(CreateCategoryValidator))]
         public async Task<Result<int>> CreateCategory(CreateCategoryViewModel createCategoryViewModel)
         {
 
@@ -79,26 +75,10 @@ namespace Kuleli.Shop.Application.Services.Implementation
             //var categoryEntity = new Category
             //{
             //    Name = createCategoryViewModel.CategoryName
-            //};
-
-            var validator = new CreateCategoryValidator();
-            var validationResult = validator.Validate(createCategoryViewModel);
-
-            if (!validationResult.IsValid)
-            {
-                throw new ValidateException(validationResult);
-            }
+            //};           
 
             var result = new Result<int>();
-
-            if(string.IsNullOrEmpty(createCategoryViewModel.CategoryName)) 
-            {
-                throw new Exception("KATEGORI ADI BOS BIRAKILAMAZ");
-            }
-            if(createCategoryViewModel.CategoryName.Length >100)
-            {
-                throw new Exception("KATEGORI ADI 100 KARAKTERDEN BUYUK OLAMAZ");            
-            }
+                     
             var categoryEntity = _mapper.Map<CreateCategoryViewModel, Category>(createCategoryViewModel);
 
             //uretilen entity nesnesi kategori koleksiyonuna ekleniyor
@@ -110,10 +90,15 @@ namespace Kuleli.Shop.Application.Services.Implementation
             return result;
         }
 
+
+        [ValidationBehavior(typeof(DeleteCategoryValidator))]   
         public async Task<Result<int>> DeleteCategory(DeleteCategoryViewModel deleteCategoryViewModel)
         {
 
             var result = new Result<int>();
+
+           
+
             //sarta baglı kategori getirmek icin kullanılır fake id durumu!!!
 
             //gonderilen id bilgisine karsilik gelen bir kategori var mi??
@@ -122,13 +107,7 @@ namespace Kuleli.Shop.Application.Services.Implementation
             {
                 throw new NotFoundException($"{deleteCategoryViewModel.Id} NUMARALI KATEGORI BULUNAMADI!");
             }
-            var validator = new DeleteCategoryValidator();
-            var validationResult = validator.Validate(deleteCategoryViewModel);
-
-            if (!validationResult.IsValid)
-            {
-                throw new ValidateException(validationResult);
-            }
+           
             // veritabaninda kayitli kategoriyi getirelim.
             var existsCategory = await _context.Categories.FindAsync(deleteCategoryViewModel.Id);
             // silindi olarak isaretleyelim.
@@ -142,9 +121,13 @@ namespace Kuleli.Shop.Application.Services.Implementation
 
         }
 
+
+        [ValidationBehavior(typeof(UpdateCategoryValidator))]
         public async Task<Result<int>> UpdateCategory(UpdateCategoryVievModel updateCategoryVievModel)
-        {
+        {          
             var result =new Result<int>();
+            
+
             //gonderilen id bilgisine karsilik gelen bir kategori var mi??
             var categoryExists = await _context.Categories.AnyAsync(x => x.Id == updateCategoryVievModel.Id);
             if (!categoryExists)
@@ -152,13 +135,6 @@ namespace Kuleli.Shop.Application.Services.Implementation
                 throw new NotFoundException($"{updateCategoryVievModel} NUMARALI KATEGORI BULUNAMADI!");
             }
 
-            var validator = new UpdateCategoryValidator();
-            var validationResult = validator.Validate(updateCategoryVievModel);
-
-            if (!validationResult.IsValid)
-            {
-                throw new ValidateException(validationResult);
-            }
 
             var updatedCategory = _mapper.Map<UpdateCategoryVievModel, Category>(updateCategoryVievModel);
 

@@ -25,4 +25,4 @@ namespace Kuleli.Shop.Application.Validators.Categories
                 .WithMessage("KATEGORI ADI 100 KARAKTERDEN FAZLA OLAMAZ");
         }
     }
-}
+}                                                                        
