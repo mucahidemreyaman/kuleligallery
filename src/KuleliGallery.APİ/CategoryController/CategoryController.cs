@@ -1,6 +1,7 @@
 using Kuleli.Shop.Application.Model.Dtos;
 using Kuleli.Shop.Application.Model.RequestModels;
 using Kuleli.Shop.Application.Services.Absraction;
+using Kuleli.Shop.Application.Wrapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KuleliGallery.APİ.Controllers
@@ -21,28 +22,28 @@ namespace KuleliGallery.APİ.Controllers
              
 
         [HttpGet("get")]
-        public async Task<ActionResult<List<CategoryDto>>> GetAllCategories()
+        public async Task<ActionResult<Result<List<CategoryDto>>>> GetAllCategories()
         {
             var categories = await _categoryServices.GetAllCategories();
            return Ok(categories);
         }
 
         [HttpGet("get/{id:int}")]
-        public async Task<ActionResult<List<CategoryDto>>> GetAllCategories(int id)
+        public async Task<ActionResult<Result<List<CategoryDto>>>> GetAllCategories(int id)
         {
             var categories = await _categoryServices.GetCategoryById(new GetCategoryByIdViewModel { Id= id});
             return Ok(categories);
         }
 
         [HttpPost("create")]
-        public async Task<ActionResult<int>> CreateCategory(CreateCategoryViewModel createCategoryViewModel)
+        public async Task<ActionResult<Result<int>>> CreateCategory(CreateCategoryViewModel createCategoryViewModel)
         {
             var categoryId = await _categoryServices.CreateCategory(createCategoryViewModel);
             return Ok(categoryId);
         }
 
         [HttpPut("update/{id:int}")]
-        public async Task<ActionResult<int>> UpdateCategory(int id, UpdateCategoryVievModel updateCategoryVievModel)
+        public async Task<ActionResult<Result<int>>> UpdateCategory(int id, UpdateCategoryVievModel updateCategoryVievModel)
         {
 
             //status kodu değştirir
@@ -57,10 +58,10 @@ namespace KuleliGallery.APİ.Controllers
         }
 
         [HttpDelete("delete/{id:int}")]
-        public async Task<int> DeleteCategory(int id)
+        public async Task<ActionResult<Result<int>>> DeleteCategory(int id)
         {
             var categoryId = await _categoryServices.DeleteCategory(new DeleteCategoryViewModel { Id=id});
-            return categoryId;
+            return Ok(categoryId);
         }
     }
 }

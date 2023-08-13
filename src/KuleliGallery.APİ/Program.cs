@@ -1,6 +1,8 @@
+using FluentValidation;
 using Kuleli.Shop.Application.AutoMappings;
 using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Services.Implementation;
+using Kuleli.Shop.Application.Validators.Categories;
 using Kuleli.Shop.Persistance.Context;
 using KuleliGallery.APÝ.Filters;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +28,9 @@ builder.Services.AddScoped<ICategoryServices, CategoryService>();
 
 //Automapper
 builder.Services.AddAutoMapper(typeof(DomainToDto), typeof(ViewModelToDomain));
+
+//FluentValidation istekte gonderilen modele ait propertylerin istenen formatta destekleyip desteklemediðini anlamamýzý saðlar.
+builder.Services.AddValidatorsFromAssemblyContaining(typeof(CreateCategoryValidator));
 
 var app = builder.Build();
 
