@@ -6,10 +6,22 @@ using Kuleli.Shop.Application.Validators.Categories;
 using Kuleli.Shop.Persistance.Context;
 using KuleliGallery.APÝ.Filters;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+//logging
+var configuration = new ConfigurationBuilder()
+       .SetBasePath(Directory.GetCurrentDirectory())
+       .AddJsonFile("appsettings.json")
+       .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", true)
+       .Build();
 
+Log.Logger = new LoggerConfiguration()
+      .ReadFrom.Configuration(configuration)
+      .CreateLogger();
+
+Log.Logger.Information("PROGRAM STARTED...");
 // Add services to the container.
 
 builder.Services.AddControllers(opt =>
@@ -32,10 +44,6 @@ builder.Services.AddAutoMapper(typeof(DomainToDto), typeof(ViewModelToDomain));
 //FluentValidation istekte gonderilen modele ait propertylerin istenen formatta destekleyip desteklemediðini anlamamýzý saðlar.
 builder.Services.AddValidatorsFromAssemblyContaining(typeof(CreateCategoryValidator));
 
-Log.Logger = new LoggerConfiguration()
-    .WriteTo.Seq("http://localhost:5341")
-    .MinimumLevel.Information()
-    .CreateLogger();
 
 var app = builder.Build();
 

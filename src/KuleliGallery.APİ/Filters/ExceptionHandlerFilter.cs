@@ -3,6 +3,7 @@ using Kuleli.Shop.Application.Wrapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Newtonsoft.Json;
+using Serilog;
 
 namespace KuleliGallery.APİ.Filters
 {
@@ -40,6 +41,8 @@ namespace KuleliGallery.APİ.Filters
                    context.Exception.Message};
             }
 
+            Log.Error(context.Exception,$"{context.HttpContext.Request.Path} ADRESI CAGRILIRKEN BIR HATA OLUSTU");
+            
             context.Result = new JsonResult(result);           
             context.HttpContext.Response.StatusCode = 400;
             context.ExceptionHandled = true;

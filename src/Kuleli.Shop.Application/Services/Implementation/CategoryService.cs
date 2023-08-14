@@ -26,6 +26,7 @@ namespace Kuleli.Shop.Application.Services.Implementation
 
         //Automapper : Bir modeli baska bir modele cevirmek icin kullanılıyor.
 
+        [PerformanceBehavior]
         public async Task<Result<List<CategoryDto>>> GetAllCategories()
         {
             var result= new Result<List<CategoryDto>>();
