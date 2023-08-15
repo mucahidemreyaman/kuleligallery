@@ -6,7 +6,6 @@ using Kuleli.Shop.Application.Validators.Categories;
 using Kuleli.Shop.Persistance.Context;
 using KuleliGallery.APÝ.Filters;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);

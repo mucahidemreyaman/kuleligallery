@@ -41,7 +41,7 @@ namespace Kuleli.Shop.Persistance.Mapping
                 .WithMany(x => x.ProductComments)
                 .HasForeignKey(x => x.ProductId)
                 .HasConstraintName("COMMENT_PRODUCT_PRODUCT_ID")
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.NoAction);
 
             builder.HasOne(x => x.Customer)
                 .WithMany(x => x.ProductComments)

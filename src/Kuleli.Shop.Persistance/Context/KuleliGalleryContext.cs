@@ -73,6 +73,14 @@ namespace Kuleli.Shop.Persistance.Context
                         entry.Entity.CreateDate = DateTime.Now;
                         entry.Entity.CreatedBy = "admin";
                         break;
+
+                    //Delete
+                    case EntityState.Deleted:
+                        entry.Entity.ModifiedDate = DateTime.Now;
+                        entry.Entity.ModifiedBy = "admin";
+                        entry.Entity.IsDeleted = true;
+                        entry.State= EntityState.Modified;
+                        break;
                     default:
                         break;
                 }

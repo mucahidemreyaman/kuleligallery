@@ -38,7 +38,7 @@ namespace Kuleli.Shop.Persistance.Mapping
                 .WithMany(x => x.Orders)
                 .HasForeignKey(x => x.CustomerId)
                 .HasConstraintName("ORDERS_CUSTOMER_CUSTOMER_ID")
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.NoAction);
 
             builder.HasOne(x => x.Address)
                 .WithMany(x => x.Orders)
