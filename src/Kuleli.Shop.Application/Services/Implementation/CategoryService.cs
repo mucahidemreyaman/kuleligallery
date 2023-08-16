@@ -8,18 +8,18 @@ using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Validators.Categories;
 using Kuleli.Shop.Application.Wrapper;
 using Kuleli.Shop.Domain.Entities;
+using Kuleli.Shop.Domain.UWork;
 
 namespace Kuleli.Shop.Application.Services.Implementation
 {
     public class CategoryService : ICategoryServices
     {
         private readonly IMapper _mapper;
-        private readonly IRepository<Category> _repository;
-
-        public CategoryService(IMapper mapper, IRepository<Category> repository)
+        private readonly IUnitwork _db;
+        public CategoryService(IMapper mapper, IUnitwork db)
         {
             _mapper = mapper;
-            _repository = repository;
+            _db = db;
         }
 
         //Automapper : Bir modeli baska bir modele cevirmek icin kullanılıyor.
@@ -33,7 +33,7 @@ namespace Kuleli.Shop.Application.Services.Implementation
 
             ////_mapper.Map<T1,T2> T1 tipindeki kaynak objeyi T2 tipindeki hedef objeye cevirir.
             //var categoryDtos= _mapper.Map<List<Category>,List<CategoryDto>>(categories);
-            var categoryEntities = await _repository.GetAllAsync();
+            var categoryEntities = await _db.GetRepository<Category>().GetAllAsync();
             var categoryDtos = _mapper.Map<List<Category>, List<CategoryDto>>(categoryEntities);
             result.Data = categoryDtos;
 
@@ -58,14 +58,14 @@ namespace Kuleli.Shop.Application.Services.Implementation
 
 
 
-            var categoryExists = await _repository.AnyAsync(x => x.Id == getCategoryByIdViewModel.Id);
+            var categoryExists = await _db.GetRepository<Category>().AnyAsync(x => x.Id == getCategoryByIdViewModel.Id);
             if (!categoryExists)
             {
                 throw new Exception($"{getCategoryByIdViewModel.Id} NUMARALI KATEGORI BULUNAMADI!");
             }
             //var categoryDto = await _context.Categories.ProjectTo<CategoryDto>(_mapper.ConfigurationProvider)
             //    .FirstOrDefaultAsync(x => x.Id == getCategoryByIdViewModel.Id);
-            var categoryEntity = await _repository.GetById(getCategoryByIdViewModel.Id);
+            var categoryEntity = await _db.GetRepository<Category>().GetById(getCategoryByIdViewModel.Id);
             var categoryDto = _mapper.Map<Category, CategoryDto>(categoryEntity);
             result.Data = categoryDto;
             return result;
@@ -91,7 +91,9 @@ namespace Kuleli.Shop.Application.Services.Implementation
             //await _context.SaveChangesAsync();
             //yansıtılan kategorinin idsi oluyor ve idyi getirmemizi sağlıyor...!!!
             //Db kayıt isleminden sonra herhangi bir sıkıntı yoksa bu kategori icin atanan entity geri doner...!!!
-            await _repository.Add(categoryEntity);
+            await _db.GetRepository<Category>().Add(categoryEntity);
+            await _db.CommitAsync();
+
             result.Data = categoryEntity.Id;
             return result;
         }
@@ -109,7 +111,7 @@ namespace Kuleli.Shop.Application.Services.Implementation
 
             //gonderilen id bilgisine karsilik gelen bir kategori var mi??
             //var categoryExists = await _context.Categories.AnyAsync(x => x.Id == deleteCategoryViewModel.Id);
-            var categoryExists = await _repository.AnyAsync(x => x.Id == deleteCategoryViewModel.Id);
+            var categoryExists = await _db.GetRepository<Category>().AnyAsync(x => x.Id == deleteCategoryViewModel.Id);
             if (!categoryExists)
             {
                 throw new NotFoundException($"{deleteCategoryViewModel.Id} NUMARALI KATEGORI BULUNAMADI!");
@@ -118,7 +120,8 @@ namespace Kuleli.Shop.Application.Services.Implementation
             // veritabaninda kayitli kategoriyi getirelim.
             //var existsCategory = await _context.Categories.FindAsync(deleteCategoryViewModel.Id);
             //var existsCategory = await _repository.GetById(deleteCategoryViewModel.Id);
-            await _repository.Delete(deleteCategoryViewModel.Id);
+            await _db.GetRepository<Category>().Delete(deleteCategoryViewModel.Id);
+            await _db.CommitAsync();
             // silindi olarak isaretleyelim.
             //existsCategory.IsDeleted = true;
             ////guncellemeyi veritabanına yansitalim..!!
@@ -141,7 +144,7 @@ namespace Kuleli.Shop.Application.Services.Implementation
 
             //gonderilen id bilgisine karsilik gelen bir kategori var mi??
             //var categoryExists = await _context.Categories.AnyAsync(x => x.Id == updateCategoryVievModel.Id);
-            var categoryExists = await _repository.AnyAsync(x => x.Id == updateCategoryVievModel.Id);
+            var categoryExists = await _db.GetRepository<Category>().AnyAsync(x => x.Id == updateCategoryVievModel.Id);
             if (!categoryExists)
             {
                 throw new NotFoundException($"{updateCategoryVievModel} NUMARALI KATEGORI BULUNAMADI!");
@@ -158,7 +161,8 @@ namespace Kuleli.Shop.Application.Services.Implementation
             //guncellemeyi veritabanına yansitalim..!!
             //_context.Categories.Update(updatedCategory);
             //await _context.SaveChangesAsync();
-            _repository.Update(updatedCategory);
+            _db.GetRepository<Category>().Update(updatedCategory);
+            _db.CommitAsync();
             result.Data = updatedCategory.Id;
 
             return result;
