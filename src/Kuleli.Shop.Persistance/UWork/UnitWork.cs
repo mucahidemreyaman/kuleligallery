@@ -12,6 +12,7 @@ namespace Kuleli.Shop.Persistance.UWork
         private Dictionary<Type, object> _repositories;
         private readonly IServiceProvider _serviceProvider; // ServiceProvider Objesi dependency injectionda ki servise belirli bir adla erişmemizi saglar
         private readonly KuleliGalleryContext _context;
+
         public UnitWork(IServiceProvider serviceProvider, KuleliGalleryContext context)
         {
             _repositories = new Dictionary<Type, object>();
@@ -26,7 +27,7 @@ namespace Kuleli.Shop.Persistance.UWork
 
         public async Task<bool> CommitAsync()
         {
-            using(var transaction = _context.Database.BeginTransaction())
+            using (var transaction = _context.Database.BeginTransaction())
             {
                 try
                 {
@@ -39,7 +40,7 @@ namespace Kuleli.Shop.Persistance.UWork
                     throw;
                 }
             }
-          
+
             return true;
         }
 
@@ -58,15 +59,48 @@ namespace Kuleli.Shop.Persistance.UWork
             //Eğer bu repo ile ilgili UnitOfWork icin hic kullanılmamıssa tanımlı degildir.
             //Burada DI icerisinden bu repo alınır ve bundan sonraki kullanımlarda ihtiyac olabilir.
             // düsüncesi ile sınıf icerisindeki Dictionaryde saklanır..
-            
 
-            using (var scope = _serviceProvider.CreateScope())
-            {
-                var repository = scope.ServiceProvider.GetRequiredService<IRepository<T>>();
-                _repositories.Add(typeof(IRepository<T>), repository);
-                return repository;
 
-            }
+            var scope = _serviceProvider.CreateScope();
+
+            var repository = scope.ServiceProvider.GetRequiredService<IRepository<T>>();
+            _repositories.Add(typeof(IRepository<T>), repository);
+            return repository;
+
+
         }
+
+        #region Dispose
+
+        bool _disposed = false;
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+            {
+                return;
+            }
+
+            if (disposing)
+            {
+                // TODO: dispose managed state (managed objects).
+                //.Net'in kendi objelerini kaldırır
+                _context.Dispose();
+            }
+
+            // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+            // TODO: set large fields to null.
+            //Kullanılan harici dil kütüphaneleri(.Net ile yazılmamıs external kütüphaneler)
+            //Örneğin görüntü islemi icin kullanılacak bir C++ kütüphanesini bellekten atılır.
+
+
+            _disposed = true;
+        }
+        #endregion
     }
 }

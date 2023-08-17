@@ -1,14 +1,15 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Kuleli.Shop.Application.Behaviors;
 using Kuleli.Shop.Application.Exceptions;
 using Kuleli.Shop.Application.Model.Dtos;
 using Kuleli.Shop.Application.Model.RequestModels;
-using Kuleli.Shop.Application.Repostories;
 using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Validators.Categories;
 using Kuleli.Shop.Application.Wrapper;
 using Kuleli.Shop.Domain.Entities;
 using Kuleli.Shop.Domain.UWork;
+using Microsoft.EntityFrameworkCore;
 
 namespace Kuleli.Shop.Application.Services.Implementation
 {
@@ -33,13 +34,19 @@ namespace Kuleli.Shop.Application.Services.Implementation
 
             ////_mapper.Map<T1,T2> T1 tipindeki kaynak objeyi T2 tipindeki hedef objeye cevirir.
             //var categoryDtos= _mapper.Map<List<Category>,List<CategoryDto>>(categories);
+
             var categoryEntities = await _db.GetRepository<Category>().GetAllAsync();
-            var categoryDtos = _mapper.Map<List<Category>, List<CategoryDto>>(categoryEntities);
+            //categoryEntities = categoryEntities.Where(x => x.Id > 7);
+            var categoryDtos = await categoryEntities.ProjectTo<CategoryDto>
+                (_mapper.ConfigurationProvider).ToListAsync();
+
+
+            //var categoryDtos = _mapper.Map<List<Category>, List<CategoryDto>>(categoryEntities);
             result.Data = categoryDtos;
 
             //var categoryDtos = await _context.Categories.ProjectTo<CategoryDto>
             //(_mapper.ConfigurationProvider).ToListAsync();
-
+            _db.Dispose();
             return result;
         }
 
@@ -67,7 +74,9 @@ namespace Kuleli.Shop.Application.Services.Implementation
             //    .FirstOrDefaultAsync(x => x.Id == getCategoryByIdViewModel.Id);
             var categoryEntity = await _db.GetRepository<Category>().GetById(getCategoryByIdViewModel.Id);
             var categoryDto = _mapper.Map<Category, CategoryDto>(categoryEntity);
+
             result.Data = categoryDto;
+            _db.Dispose();
             return result;
         }
 
@@ -95,6 +104,7 @@ namespace Kuleli.Shop.Application.Services.Implementation
             await _db.CommitAsync();
 
             result.Data = categoryEntity.Id;
+            _db.Dispose();
             return result;
         }
 
@@ -130,6 +140,7 @@ namespace Kuleli.Shop.Application.Services.Implementation
 
 
             result.Data = deleteCategoryViewModel.Id;
+            _db.Dispose();
 
             return result;
 
@@ -164,6 +175,7 @@ namespace Kuleli.Shop.Application.Services.Implementation
             _db.GetRepository<Category>().Update(updatedCategory);
             _db.CommitAsync();
             result.Data = updatedCategory.Id;
+            _db.Dispose();
 
             return result;
 

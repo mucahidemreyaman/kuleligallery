@@ -4,8 +4,10 @@ using Kuleli.Shop.Application.Repostories;
 using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Services.Implementation;
 using Kuleli.Shop.Application.Validators.Categories;
+using Kuleli.Shop.Domain.UWork;
 using Kuleli.Shop.Persistance.Context;
 using Kuleli.Shop.Persistance.Repositories;
+using Kuleli.Shop.Persistance.UWork;
 using KuleliGallery.APÝ.Filters;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -41,6 +43,10 @@ builder.Services.AddDbContext<KuleliGalleryContext>(opt =>
 
 //Repository Registiration
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+//UnitOfWork Registiration
+builder.Services.AddScoped<IUnitwork, UnitWork>();
+
 //Business Service Registiration
 builder.Services.AddScoped<ICategoryServices, CategoryService>();//typeof seklinde de yazabilirdik ama 
 //generic olmayan ifadeler icin bu kullaným daha dogrudur..
@@ -53,7 +59,8 @@ builder.Services.AddAutoMapper(typeof(DomainToDto), typeof(ViewModelToDomain));
 builder.Services.AddValidatorsFromAssemblyContaining(typeof(CreateCategoryValidator));
 
 
-var app = builder.Build();
+
+var app = builder.Build(); //Dependency Injectiona Unit of worku kurmadýgýmýz icin "https://prnt.sc/PFu1tEhN31Y7" hata alýrýz //
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

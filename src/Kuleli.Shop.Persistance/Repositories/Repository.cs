@@ -18,13 +18,13 @@ namespace Kuleli.Shop.Persistance.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<List<T>> GetAllAsync()
+        public async Task<IQueryable<T>> GetAllAsync()
         {
-            return await _dbContext.Set<T>().ToListAsync();
+            return await  Task.FromResult(_dbContext.Set<T>());
         }
-        public async Task<List<T>> GetByFilterAsync(Expression<Func<T, bool>> filter)
+        public async Task<IQueryable<T>> GetByFilterAsync(Expression<Func<T, bool>> filter)
         {
-            return await _dbContext.Set<T>().Where(filter).ToListAsync();
+            return await Task.FromResult(_dbContext.Set<T>().Where(filter));    
         }
 
         public async Task<bool> AnyAsync(Expression<Func<T, bool>> filter)
