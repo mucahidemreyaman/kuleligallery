@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Kuleli.Shop.Application.Model.RequestModels;
+using Kuleli.Shop.Application.Model.RequestModels.CategoryModels;
 
 namespace Kuleli.Shop.Application.Validators.Categories
 {

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Kuleli.Shop.Application.Model.Dtos;
+using Kuleli.Shop.Application.Model.Dtos.CategoryDtos;
 using Kuleli.Shop.Domain.Entities;
 
 namespace Kuleli.Shop.Application.AutoMappings

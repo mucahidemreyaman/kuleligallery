@@ -1,4 +1,4 @@
-﻿namespace Kuleli.Shop.Application.Model.RequestModels
+﻿namespace Kuleli.Shop.Application.Model.RequestModels.CategoryModels
 {
     public class CreateCategoryViewModel
     {

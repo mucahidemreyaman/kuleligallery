@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Kuleli.Shop.Application.Model.RequestModels;
+using Kuleli.Shop.Application.Model.RequestModels.CategoryModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,8 +1,8 @@
 using FluentValidation;
 using Kuleli.Shop.Application.AutoMappings;
 using Kuleli.Shop.Application.Repostories;
-using Kuleli.Shop.Application.Services.Absraction;
-using Kuleli.Shop.Application.Services.Implementation;
+using Kuleli.Shop.Application.Services.Absraction.CategoryService;
+using Kuleli.Shop.Application.Services.Implementation.CategoryService;
 using Kuleli.Shop.Application.Validators.Categories;
 using Kuleli.Shop.Domain.UWork;
 using Kuleli.Shop.Persistance.Context;
