@@ -10,13 +10,13 @@ namespace Kuleli.Shop.Persistance.UWork
     public class UnitWork : IUnitwork
     {
         private Dictionary<Type, object> _repositories;
-        private readonly IServiceProvider _serviceProvider; // ServiceProvider Objesi dependency injectionda ki servise belirli bir adla erişmemizi saglar
+        //private readonly IServiceProvider _serviceProvider; // ServiceProvider Objesi dependency injectionda ki servise belirli bir adla erişmemizi saglar
         private readonly KuleliGalleryContext _context;
 
-        public UnitWork(IServiceProvider serviceProvider, KuleliGalleryContext context)
+        public UnitWork(KuleliGalleryContext context)
         {
             _repositories = new Dictionary<Type, object>();
-            _serviceProvider = serviceProvider;
+            //_serviceProvider = serviceProvider;
             _context = context;
         }
 
@@ -27,21 +27,25 @@ namespace Kuleli.Shop.Persistance.UWork
 
         public async Task<bool> CommitAsync()
         {
+            var result = false;
             using (var transaction = _context.Database.BeginTransaction())
             {
                 try
                 {
+                    var trackdEntities = _context.ChangeTracker.Entries<AuditableEntity>().ToList();
                     await _context.SaveChangesAsync();
-                    transaction.Commit();
+                    await transaction.CommitAsync();
+
+                    return true;
                 }
                 catch
                 {
                     await transaction.RollbackAsync();
                     throw;
                 }
-            }
 
-            return true;
+            }
+            return result;
         }
 
 
@@ -60,10 +64,8 @@ namespace Kuleli.Shop.Persistance.UWork
             //Burada DI icerisinden bu repo alınır ve bundan sonraki kullanımlarda ihtiyac olabilir.
             // düsüncesi ile sınıf icerisindeki Dictionaryde saklanır..
 
-
-            var scope = _serviceProvider.CreateScope();
-
-            var repository = scope.ServiceProvider.GetRequiredService<IRepository<T>>();
+            var repository = new Repository<T>(_context);
+           // var scope = _serviceProvider.CreateScope();
             _repositories.Add(typeof(IRepository<T>), repository);
             return repository;
 

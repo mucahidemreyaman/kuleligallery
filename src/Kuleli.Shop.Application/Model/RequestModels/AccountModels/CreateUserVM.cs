@@ -1,5 +1,4 @@
 ﻿using Kuleli.Shop.Domain.Entities;
-
 namespace Kuleli.Shop.Application.Model.RequestModels.AccountModels
 {
     public class CreateUserVM

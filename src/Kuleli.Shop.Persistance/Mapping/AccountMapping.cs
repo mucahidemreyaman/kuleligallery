@@ -33,11 +33,13 @@ namespace Kuleli.Shop.Persistance.Mapping
 
             builder.Property(x => x.LastUserIp)
                 .HasColumnType("nvarchar(100)")
-                .HasColumnName("LAST_USER_IP")
+                .HasColumnName("LAST_LOGIN_IP")
+                .IsRequired(false)
                 .HasColumnOrder(6);
 
             builder.HasOne(x => x.Customer)
-                .WithOne(x => x.Account);
+                .WithOne(x => x.Account)
+                .HasForeignKey<Account>(x => x.CustomerId);
 
             builder.ToTable("ACCOUNTS");
 

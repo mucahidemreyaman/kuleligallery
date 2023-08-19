@@ -32,7 +32,7 @@ namespace Kuleli.Shop.Persistance.Mapping
               .HasColumnName("DISLIKE_COUNT")
               .HasColumnOrder(6);
 
-            builder.Property(x => x.LikeCount)
+            builder.Property(x => x.IsApproved)
             .HasColumnName("IS_APPROVED")
             .HasDefaultValueSql("0")
             .HasColumnOrder(7);
@@ -40,8 +40,7 @@ namespace Kuleli.Shop.Persistance.Mapping
             builder.HasOne(x => x.Product)
                 .WithMany(x => x.ProductComments)
                 .HasForeignKey(x => x.ProductId)
-                .HasConstraintName("COMMENT_PRODUCT_PRODUCT_ID")
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasConstraintName("COMMENT_PRODUCT_PRODUCT_ID");               
 
             builder.HasOne(x => x.Customer)
                 .WithMany(x => x.ProductComments)

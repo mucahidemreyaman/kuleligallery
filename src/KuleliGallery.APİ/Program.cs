@@ -1,7 +1,9 @@
 using FluentValidation;
 using Kuleli.Shop.Application.AutoMappings;
 using Kuleli.Shop.Application.Repostories;
+using Kuleli.Shop.Application.Services.Absraction.AccountService;
 using Kuleli.Shop.Application.Services.Absraction.CategoryService;
+using Kuleli.Shop.Application.Services.Implementation.AccountService;
 using Kuleli.Shop.Application.Services.Implementation.CategoryService;
 using Kuleli.Shop.Application.Validators.Categories;
 using Kuleli.Shop.Domain.UWork;
@@ -48,7 +50,11 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUnitwork, UnitWork>();
 
 //Business Service Registiration
-builder.Services.AddScoped<ICategoryServices, CategoryService>();//typeof seklinde de yazabilirdik ama 
+builder.Services.AddScoped<ICategoryServices, CategoryService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
+
+
+//typeof seklinde de yazabilirdik ama 
 //generic olmayan ifadeler icin bu kullaným daha dogrudur..
 
 

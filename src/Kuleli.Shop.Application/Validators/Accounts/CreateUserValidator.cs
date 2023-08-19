@@ -57,7 +57,7 @@ namespace Kuleli.Shop.Application.Validators.Accounts
              .MaximumLength(10).WithMessage("PAROLA TEKRAR EN FAZLA 10 KARAKTER OLABILIR.");
 
             RuleFor(x => x.Password)
-                .Matches(x => x.PasswordAgain).WithMessage("PAROLA VE PAROLA TEKRAR BILGISI ESLESMIYOR.")
+                .Matches(x => x.PasswordAgain).WithMessage("PAROLA VE PAROLA TEKRAR BILGISI ESLESMIYOR.");
 
 
 

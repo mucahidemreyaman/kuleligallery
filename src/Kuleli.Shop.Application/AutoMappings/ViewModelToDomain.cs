@@ -9,9 +9,9 @@ namespace Kuleli.Shop.Application.AutoMappings
 {
     public class ViewModelToDomain : Profile
     {
-        public ViewModelToDomain(IConfiguration configuration) 
+        public ViewModelToDomain() 
         {
-            string cipherkey = configuration["AppSettings : SecretKey"];
+            
 
             //kaynak ve hedef arasında property isimleri veya türleri eslesmezse manuel tanımlama yapilir.
             CreateMap<CreateCategoryViewModel, Category>()
@@ -23,8 +23,8 @@ namespace Kuleli.Shop.Application.AutoMappings
             //Kullanıcı olusturma istegi
 
             CreateMap<CreateUserVM, Customer>();
-            CreateMap<CreateUserVM, Account>()
-                .ForMember(x=>x.Password, y=> y.MapFrom(p=> CipherUtil.EncryptString(cipherkey,p.Password)));
+            CreateMap<CreateUserVM, Account>();
+           
 
 
         }

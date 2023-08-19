@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Kuleli.Shop.Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class Deneme : Migration
+    public partial class deneme : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,7 +21,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                     USER_NAME = table.Column<string>(type: "nvarchar(10)", nullable: false),
                     PASSWORD = table.Column<string>(type: "nvarchar(100)", nullable: false),
                     LAST_LOGIN_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LAST_USER_IP = table.Column<string>(type: "nvarchar(100)", nullable: false),
+                    LAST_LOGIN_IP = table.Column<string>(type: "nvarchar(100)", nullable: true),
                     IS_DELETED = table.Column<bool>(type: "bit", nullable: true, defaultValueSql: "0")
                 },
                 constraints: table =>
@@ -200,8 +200,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                         name: "ORDERS_CUSTOMER_CUSTOMER_ID",
                         column: x => x.CUTOMER_ID,
                         principalTable: "CUSTOMERS",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "ID");
                     table.ForeignKey(
                         name: "ORDER_ADDRESS_ADDRESS_ID",
                         column: x => x.ADDRESS_ID,
@@ -219,14 +218,14 @@ namespace Kuleli.Shop.Persistance.Migrations
                     PRODUCT_ID = table.Column<int>(type: "int", nullable: false),
                     CUSTOMER_ID = table.Column<int>(type: "int", nullable: false),
                     DETAIL = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LIKE_COUNT = table.Column<int>(type: "int", nullable: false),
                     DISLIKE_COUNT = table.Column<int>(type: "int", nullable: false),
-                    IS_APPROVED = table.Column<int>(type: "int", nullable: false, defaultValueSql: "0"),
+                    IS_APPROVED = table.Column<bool>(type: "bit", nullable: true, defaultValueSql: "0"),
                     CREATE_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CREATE_BY = table.Column<string>(type: "nvarchar(10)", nullable: true),
                     MODIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
                     MODIFIED_BY = table.Column<string>(type: "nvarchar(10)", nullable: true),
-                    IS_DELETED = table.Column<bool>(type: "bit", nullable: true, defaultValueSql: "0"),
-                    IsApproved = table.Column<bool>(type: "bit", nullable: true)
+                    IS_DELETED = table.Column<bool>(type: "bit", nullable: true, defaultValueSql: "0")
                 },
                 constraints: table =>
                 {
@@ -242,7 +241,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                         column: x => x.PRODUCT_ID,
                         principalTable: "PRODUCTS",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -269,7 +268,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                         column: x => x.ORDER_ID,
                         principalTable: "ORDERS",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "ORDER_DETAILS_PRODUCT_PRODUCT_ID",
                         column: x => x.PRODUCT_ID,

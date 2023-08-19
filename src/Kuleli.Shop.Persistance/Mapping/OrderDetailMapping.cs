@@ -25,11 +25,11 @@ namespace Kuleli.Shop.Persistance.Mapping
               .HasColumnName("TOTAL_PRICE")
               .HasColumnOrder(5);
 
-            builder.HasOne(x=>x.Order)
+            builder.HasOne(x => x.Order)
                 .WithMany(x => x.OrderDetails)
                 .HasForeignKey(x => x.OrderId)
-                .HasConstraintName("ORDER_DETAILS_ORDER_ORDER_ID")
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasConstraintName("ORDER_DETAILS_ORDER_ORDER_ID");
+            
 
             builder.HasOne(x => x.Product)
                .WithMany(x => x.OrderDetails)

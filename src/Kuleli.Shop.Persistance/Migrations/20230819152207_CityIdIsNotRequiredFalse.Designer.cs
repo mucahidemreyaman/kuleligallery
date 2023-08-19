@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kuleli.Shop.Persistance.Migrations
 {
     [DbContext(typeof(KuleliGalleryContext))]
-    [Migration("20230812123928_Deneme")]
-    partial class Deneme
+    [Migration("20230819152207_CityIdIsNotRequiredFalse")]
+    partial class CityIdIsNotRequiredFalse
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,9 +53,8 @@ namespace Kuleli.Shop.Persistance.Migrations
                         .HasColumnOrder(5);
 
                     b.Property<string>("LastUserIp")
-                        .IsRequired()
                         .HasColumnType("nvarchar(100)")
-                        .HasColumnName("LAST_USER_IP")
+                        .HasColumnName("LAST_LOGIN_IP")
                         .HasColumnOrder(6);
 
                     b.Property<string>("Password")
@@ -533,7 +532,11 @@ namespace Kuleli.Shop.Persistance.Migrations
                         .HasColumnOrder(6);
 
                     b.Property<bool?>("IsApproved")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasColumnName("IS_APPROVED")
+                        .HasColumnOrder(7)
+                        .HasDefaultValueSql("0");
 
                     b.Property<bool?>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -543,11 +546,9 @@ namespace Kuleli.Shop.Persistance.Migrations
                         .HasDefaultValueSql("0");
 
                     b.Property<int>("LikeCount")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("IS_APPROVED")
-                        .HasColumnOrder(7)
-                        .HasDefaultValueSql("0");
+                        .HasColumnName("LIKE_COUNT")
+                        .HasColumnOrder(5);
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(10)")
@@ -663,8 +664,6 @@ namespace Kuleli.Shop.Persistance.Migrations
                     b.HasOne("Kuleli.Shop.Domain.Entities.City", "City")
                         .WithMany("Customers")
                         .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
                         .HasConstraintName("CUSTOMER_CITY_CITY_ID");
 
                     b.Navigation("Account");
@@ -684,7 +683,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                     b.HasOne("Kuleli.Shop.Domain.Entities.Customer", "Customer")
                         .WithMany("Orders")
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired()
                         .HasConstraintName("ORDERS_CUSTOMER_CUSTOMER_ID");
 
@@ -698,7 +697,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                     b.HasOne("Kuleli.Shop.Domain.Entities.Order", "Order")
                         .WithMany("OrderDetails")
                         .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("ORDER_DETAILS_ORDER_ORDER_ID");
 
@@ -738,7 +737,7 @@ namespace Kuleli.Shop.Persistance.Migrations
                     b.HasOne("Kuleli.Shop.Domain.Entities.Product", "Product")
                         .WithMany("ProductComments")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("COMMENT_PRODUCT_PRODUCT_ID");
 

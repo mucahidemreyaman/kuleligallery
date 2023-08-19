@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kuleli.Shop.Domain", "Kulel
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KuleliGallery.APİ", "KuleliGallery.APİ\KuleliGallery.APİ.csproj", "{9E69DA0F-F8A9-4623-A27D-1C04D3F72199}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kuleli.Gallery.Utilies", "Kuleli.Gallery.Utilies\Kuleli.Gallery.Utilies.csproj", "{8356F974-5FDE-4358-9BBC-D075AE8E2FD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kuleli.Gallery.Utilies", "Kuleli.Gallery.Utilies\Kuleli.Gallery.Utilies.csproj", "{8356F974-5FDE-4358-9BBC-D075AE8E2FD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

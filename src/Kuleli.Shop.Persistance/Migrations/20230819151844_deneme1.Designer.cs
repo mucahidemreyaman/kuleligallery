@@ -4,6 +4,7 @@ using Kuleli.Shop.Persistance.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kuleli.Shop.Persistance.Migrations
 {
     [DbContext(typeof(KuleliGalleryContext))]
-    partial class KuleliGalleryContextModelSnapshot : ModelSnapshot
+    [Migration("20230819151844_deneme1")]
+    partial class deneme1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -661,6 +664,8 @@ namespace Kuleli.Shop.Persistance.Migrations
                     b.HasOne("Kuleli.Shop.Domain.Entities.City", "City")
                         .WithMany("Customers")
                         .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("CUSTOMER_CITY_CITY_ID");
 
                     b.Navigation("Account");
