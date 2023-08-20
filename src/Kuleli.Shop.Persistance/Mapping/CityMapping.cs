@@ -13,7 +13,7 @@ namespace Kuleli.Shop.Persistance.Mapping
     {
         public override void ConfigureDerivedEntityMapping(EntityTypeBuilder<City> builder)
         {
-            builder.Property(x => x.CityName)
+            builder.Property(x => x.Name)
                 .IsRequired()
                 .HasColumnName("CITY_NAME")
                 .HasColumnType("nvarchar(20)")

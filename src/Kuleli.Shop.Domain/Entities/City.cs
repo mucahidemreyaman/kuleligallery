@@ -4,7 +4,7 @@ namespace Kuleli.Shop.Domain.Entities
 {
     public class City : BaseEntity
     {
-        public string CityName { get; set; }
+        public string Name { get; set; }
 
         public ICollection<Customer> Customers { get; set; }
 
