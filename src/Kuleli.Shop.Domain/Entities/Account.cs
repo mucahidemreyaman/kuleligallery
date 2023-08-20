@@ -13,8 +13,15 @@ namespace Kuleli.Shop.Domain.Entities
 
         public string LastUserIp { get; set; }
         
+        public Roles Role { get; set; }
         //Ziyaretci ile üyeler arasındaki farkı göstermek icin Navigation Property kullandım..
         public Customer Customer { get; set; }
 
     }
+    public enum Roles
+    {
+        User=1,
+        Admin=2
+    }
+        
 }

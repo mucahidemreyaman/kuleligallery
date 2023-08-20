@@ -37,6 +37,10 @@ namespace Kuleli.Shop.Persistance.Mapping
                 .IsRequired(false)
                 .HasColumnOrder(6);
 
+            builder.Property(x => x.Role)
+               .HasColumnName("ROLE_ID")
+               .HasColumnOrder(7);
+
             builder.HasOne(x => x.Customer)
                 .WithOne(x => x.Account)
                 .HasForeignKey<Account>(x => x.CustomerId);

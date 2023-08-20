@@ -8,9 +8,7 @@ namespace Kuleli.Shop.Persistance.Mapping
     {
         public override void ConfigureDerivedEntityMapping(EntityTypeBuilder<Customer> builder)
         {
-            builder.Property(x => x.AccountId)
-                .HasColumnName("ACCOUNT_ID")
-                .HasColumnOrder(2);
+            
 
             builder.Property(x => x.CityId)
                 .HasColumnName("CITY_ID")
@@ -18,6 +16,7 @@ namespace Kuleli.Shop.Persistance.Mapping
 
             builder.Property(x => x.IdentityNumber)
               .HasColumnName("IDENTITY_NUMBER")
+              .IsRequired()
               .HasColumnOrder(4);
 
             builder.Property(x => x.Name)
@@ -31,7 +30,7 @@ namespace Kuleli.Shop.Persistance.Mapping
               .HasColumnType("nvarchar(30)")
               .HasColumnName("SURNAME")
               .HasColumnOrder(6);
-                      
+
             builder.Property(x => x.Email)
               .IsRequired()
               .HasColumnName("EMAIL")
@@ -52,16 +51,10 @@ namespace Kuleli.Shop.Persistance.Mapping
                 .HasColumnName("GENDER")
                 .IsRequired()
                 .HasColumnOrder(10);
-                        
-            builder.HasOne(x => x.Account)
-                .WithOne(x=>x.Customer)
-                .HasForeignKey<Customer>(x=>x.AccountId)
-                .HasConstraintName("CUSTOMER_ACCOUNT_ACCOUNT_ID")
-                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(x => x.City)
                 .WithMany(x => x.Customers)
-                .HasForeignKey(x=>x.CityId)
+                .HasForeignKey(x => x.CityId)
                 .IsRequired(false)
                 .HasConstraintName("CUSTOMER_CITY_CITY_ID");
 

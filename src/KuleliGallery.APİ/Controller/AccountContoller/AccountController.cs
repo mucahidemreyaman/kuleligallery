@@ -1,10 +1,7 @@
-using Kuleli.Shop.Application.Model.Dtos.CategoryDtos;
 using Kuleli.Shop.Application.Model.RequestModels.AccountModels;
-using Kuleli.Shop.Application.Model.RequestModels.CategoryModels;
 using Kuleli.Shop.Application.Services.Absraction.AccountService;
-using Kuleli.Shop.Application.Services.Absraction.CategoryService;
-using Kuleli.Shop.Application.Validators.Accounts;
 using Kuleli.Shop.Application.Wrapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KuleliGallery.APİ.Controller.CategoryController
@@ -14,6 +11,7 @@ namespace KuleliGallery.APİ.Controller.CategoryController
     //category/getall
     [ApiController]
     [Route("account")]
+    [Authorize]
     public class AccountController : ControllerBase
     {
         private readonly IAccountService _accountService;
@@ -21,15 +19,35 @@ namespace KuleliGallery.APİ.Controller.CategoryController
         public AccountController(IAccountService accountService)
         {
             _accountService = accountService;
-        }     
-
-        [HttpPost("create")]
-        public async Task<ActionResult<Result<int>>> CreateUser(CreateUserVM createUserVM )
-        {
-            var categoryId = await _accountService.CreateUser(createUserVM);
-            return Ok(categoryId);
         }
 
-       
+
+        [HttpPost("register")]
+        [AllowAnonymous]
+        public async Task<ActionResult<Result<int>>> Register(RegisterVM createUserVM)
+        {
+            var result = await _accountService.Register(createUserVM);
+            return Ok(result);
+        }
+
+        [HttpPost("login")]
+        [AllowAnonymous]
+        public async Task<ActionResult<Result<int>>> Login(LoginVM loginVM)
+        {
+            var result = await _accountService.Login(loginVM);
+            return Ok(result);
+        }
+
+        [HttpPut("update")]
+        public async Task<ActionResult<Result<int>>> UpdateUser(int? id, UpdateUserVM updateUserVM)
+        {
+            if (id != updateUserVM.Id)
+            {
+                return BadRequest();
+            }
+            var result = await _accountService.UpdateUser(updateUserVM);
+            return Ok(result);
+        }
+
     }
 }

@@ -4,6 +4,7 @@ using Kuleli.Shop.Application.Model.RequestModels.AccountModels;
 using Kuleli.Shop.Application.Model.RequestModels.CategoryModels;
 using Kuleli.Shop.Domain.Entities;
 using Microsoft.Extensions.Configuration;
+using System.Data;
 
 namespace Kuleli.Shop.Application.AutoMappings
 {
@@ -22,9 +23,10 @@ namespace Kuleli.Shop.Application.AutoMappings
 
             //Kullanıcı olusturma istegi
 
-            CreateMap<CreateUserVM, Customer>();
-            CreateMap<CreateUserVM, Account>();
-           
+            CreateMap<RegisterVM, Customer>();
+            CreateMap<RegisterVM, Account>()
+                .ForMember(x => x.Role, y => y.MapFrom(e => Roles.User));
+
 
 
         }

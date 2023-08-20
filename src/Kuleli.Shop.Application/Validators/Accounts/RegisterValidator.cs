@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Kuleli.Shop.Application.Validators.Accounts
 {
-    public class CreateUserValidator : AbstractValidator<CreateUserVM>
+    public class RegisterValidator : AbstractValidator<RegisterVM>
     {
-        public CreateUserValidator()
+        public RegisterValidator()
         {
             RuleFor(x=> x.CityId).NotEmpty().WithMessage("GECERLI BIR IL BILGISI GIRINIZ.")
                 .LessThan(82).WithMessage("GECERSIZ BIR IL NUMARASI");

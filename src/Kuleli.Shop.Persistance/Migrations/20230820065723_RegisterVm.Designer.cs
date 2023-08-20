@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kuleli.Shop.Persistance.Migrations
 {
     [DbContext(typeof(KuleliGalleryContext))]
-    [Migration("20230819152207_CityIdIsNotRequiredFalse")]
-    partial class CityIdIsNotRequiredFalse
+    [Migration("20230820065723_RegisterVm")]
+    partial class RegisterVm
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,6 +63,11 @@ namespace Kuleli.Shop.Persistance.Migrations
                         .HasColumnName("PASSWORD")
                         .HasColumnOrder(4);
 
+                    b.Property<int>("Role")
+                        .HasColumnType("int")
+                        .HasColumnName("ROLE_ID")
+                        .HasColumnOrder(7);
+
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(10)")
@@ -70,6 +75,9 @@ namespace Kuleli.Shop.Persistance.Migrations
                         .HasColumnOrder(3);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CustomerId")
+                        .IsUnique();
 
                     b.ToTable("ACCOUNTS", (string)null);
                 });
@@ -195,11 +203,6 @@ namespace Kuleli.Shop.Persistance.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AccountId")
-                        .HasColumnType("int")
-                        .HasColumnName("ACCOUNT_ID")
-                        .HasColumnOrder(2);
-
                     b.Property<DateTime>("Birthday")
                         .HasColumnType("datetime2")
                         .HasColumnName("BIRTHDAY")
@@ -273,9 +276,6 @@ namespace Kuleli.Shop.Persistance.Migrations
                         .HasColumnOrder(6);
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AccountId")
-                        .IsUnique();
 
                     b.HasIndex("CityId");
 
@@ -640,6 +640,17 @@ namespace Kuleli.Shop.Persistance.Migrations
                     b.ToTable("PRODUCT_IMAGES", (string)null);
                 });
 
+            modelBuilder.Entity("Kuleli.Shop.Domain.Entities.Account", b =>
+                {
+                    b.HasOne("Kuleli.Shop.Domain.Entities.Customer", "Customer")
+                        .WithOne("Account")
+                        .HasForeignKey("Kuleli.Shop.Domain.Entities.Account", "CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+                });
+
             modelBuilder.Entity("Kuleli.Shop.Domain.Entities.Address", b =>
                 {
                     b.HasOne("Kuleli.Shop.Domain.Entities.City", "City")
@@ -654,19 +665,10 @@ namespace Kuleli.Shop.Persistance.Migrations
 
             modelBuilder.Entity("Kuleli.Shop.Domain.Entities.Customer", b =>
                 {
-                    b.HasOne("Kuleli.Shop.Domain.Entities.Account", "Account")
-                        .WithOne("Customer")
-                        .HasForeignKey("Kuleli.Shop.Domain.Entities.Customer", "AccountId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired()
-                        .HasConstraintName("CUSTOMER_ACCOUNT_ACCOUNT_ID");
-
                     b.HasOne("Kuleli.Shop.Domain.Entities.City", "City")
                         .WithMany("Customers")
                         .HasForeignKey("CityId")
                         .HasConstraintName("CUSTOMER_CITY_CITY_ID");
-
-                    b.Navigation("Account");
 
                     b.Navigation("City");
                 });
@@ -758,12 +760,6 @@ namespace Kuleli.Shop.Persistance.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("Kuleli.Shop.Domain.Entities.Account", b =>
-                {
-                    b.Navigation("Customer")
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Kuleli.Shop.Domain.Entities.Address", b =>
                 {
                     b.Navigation("Orders");
@@ -783,6 +779,9 @@ namespace Kuleli.Shop.Persistance.Migrations
 
             modelBuilder.Entity("Kuleli.Shop.Domain.Entities.Customer", b =>
                 {
+                    b.Navigation("Account")
+                        .IsRequired();
+
                     b.Navigation("Orders");
 
                     b.Navigation("ProductComments");

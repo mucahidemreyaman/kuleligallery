@@ -4,7 +4,7 @@ namespace Kuleli.Shop.Domain.Entities
 {
     public class Customer : AuditableEntity
     {
-        public int AccountId { get; set; }
+        
         public string IdentityNumber { get; set; }
 
         public string Name { get; set; }

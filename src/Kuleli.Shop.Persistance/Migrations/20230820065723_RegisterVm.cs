@@ -6,29 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Kuleli.Shop.Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class deneme : Migration
+    public partial class RegisterVm : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "ACCOUNTS",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CUSTOMER_ID = table.Column<int>(type: "int", nullable: false),
-                    USER_NAME = table.Column<string>(type: "nvarchar(10)", nullable: false),
-                    PASSWORD = table.Column<string>(type: "nvarchar(100)", nullable: false),
-                    LAST_LOGIN_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LAST_LOGIN_IP = table.Column<string>(type: "nvarchar(100)", nullable: true),
-                    IS_DELETED = table.Column<bool>(type: "bit", nullable: true, defaultValueSql: "0")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ACCOUNTS", x => x.ID);
-                });
-
             migrationBuilder.CreateTable(
                 name: "CATEGORIES",
                 columns: table => new
@@ -110,13 +92,13 @@ namespace Kuleli.Shop.Persistance.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+
             migrationBuilder.CreateTable(
                 name: "CUSTOMERS",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ACCOUNT_ID = table.Column<int>(type: "int", nullable: false),
                     CITY_ID = table.Column<int>(type: "int", nullable: false),
                     IDENTITY_NUMBER = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NAME = table.Column<string>(type: "nvarchar(30)", nullable: false),
@@ -135,17 +117,10 @@ namespace Kuleli.Shop.Persistance.Migrations
                 {
                     table.PrimaryKey("PK_CUSTOMERS", x => x.ID);
                     table.ForeignKey(
-                        name: "CUSTOMER_ACCOUNT_ACCOUNT_ID",
-                        column: x => x.ACCOUNT_ID,
-                        principalTable: "ACCOUNTS",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
                         name: "CUSTOMER_CITY_CITY_ID",
                         column: x => x.CITY_ID,
                         principalTable: "CITIES",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ID");
                 });
 
             migrationBuilder.CreateTable(
@@ -171,6 +146,31 @@ namespace Kuleli.Shop.Persistance.Migrations
                         name: "PRODUCT_IMAGE_PRODUCT_PRODUCT_ID",
                         column: x => x.PRODUCT_ID,
                         principalTable: "PRODUCTS",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ACCOUNTS",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CUSTOMER_ID = table.Column<int>(type: "int", nullable: false),
+                    USER_NAME = table.Column<string>(type: "nvarchar(10)", nullable: false),
+                    PASSWORD = table.Column<string>(type: "nvarchar(100)", nullable: false),
+                    LAST_LOGIN_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LAST_LOGIN_IP = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    ROLE_ID = table.Column<int>(type: "int", nullable: false),
+                    IS_DELETED = table.Column<bool>(type: "bit", nullable: true, defaultValueSql: "0")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ACCOUNTS", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_ACCOUNTS_CUSTOMERS_CUSTOMER_ID",
+                        column: x => x.CUSTOMER_ID,
+                        principalTable: "CUSTOMERS",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -278,15 +278,15 @@ namespace Kuleli.Shop.Persistance.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_ACCOUNTS_CUSTOMER_ID",
+                table: "ACCOUNTS",
+                column: "CUSTOMER_ID",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ADDRESSES_CITY_ID",
                 table: "ADDRESSES",
                 column: "CITY_ID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CUSTOMERS_ACCOUNT_ID",
-                table: "CUSTOMERS",
-                column: "ACCOUNT_ID",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_CUSTOMERS_CITY_ID",
@@ -338,6 +338,9 @@ namespace Kuleli.Shop.Persistance.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "ACCOUNTS");
+
+            migrationBuilder.DropTable(
                 name: "ORDER_DETAILS");
 
             migrationBuilder.DropTable(
@@ -360,9 +363,6 @@ namespace Kuleli.Shop.Persistance.Migrations
 
             migrationBuilder.DropTable(
                 name: "CATEGORIES");
-
-            migrationBuilder.DropTable(
-                name: "ACCOUNTS");
 
             migrationBuilder.DropTable(
                 name: "CITIES");

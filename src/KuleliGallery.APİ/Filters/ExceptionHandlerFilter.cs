@@ -28,6 +28,10 @@ namespace KuleliGallery.APİ.Filters
             {
                 result.Errors = new List<string> { notFoundException.Message };
             }
+            else if (context.Exception is AlreadyExistsException alreadyExistsException)
+            {
+                result.Errors = new List<string> { alreadyExistsException.Message } ;
+            }
 
             else if (context.Exception is ValidateException validationException)
             {
