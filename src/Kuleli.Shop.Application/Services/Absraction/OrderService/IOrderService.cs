@@ -8,7 +8,7 @@ namespace Kuleli.Shop.Application.Services.Absraction.OrderService
     public interface IOrderService
     {
         #region Select
-        Task<Result<List<OrderDto>>> GetOrdersByCustomer(GetOrdersByCustomerVM getOrdersByCustomerVM);
+        Task<Result<List<OrderDto>>> GetOrdersByCustomer(GetOrdersByCustomerVM getOrderByCustomerVM);
 
         #endregion
 

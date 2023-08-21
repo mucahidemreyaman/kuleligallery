@@ -14,8 +14,5 @@ namespace Kuleli.Shop.Application.Repostories
         void Update(T entity);
         void Delete(T entity);
         void Delete(object id);
-
-
-
     }
 }

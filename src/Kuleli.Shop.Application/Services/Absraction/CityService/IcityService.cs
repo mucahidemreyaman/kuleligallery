@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Kuleli.Shop.Application.Services.Absraction.CityService
 {
-    public interface IcityService
+    public interface ICityService
     {
         Task<Result<List<CityDto>>> GetAllCities();
         Task<Result<CityDto>> GetCityById(int id);

@@ -5,7 +5,6 @@ using Kuleli.Shop.Application.Model.Dtos.CityDto;
 using Kuleli.Shop.Application.Model.Dtos.CustomerDtos;
 using Kuleli.Shop.Application.Model.Dtos.OrderDetails;
 using Kuleli.Shop.Application.Model.Dtos.Orders;
-using Kuleli.Shop.Application.Model.Dtos.ProductDto;
 using Kuleli.Shop.Application.Model.Dtos.ProductImages;
 using Kuleli.Shop.Application.Model.Dtos.Products;
 using Kuleli.Shop.Domain.Entities;
@@ -24,6 +23,7 @@ namespace Kuleli.Shop.Application.AutoMappings
             CreateMap<City, CityDto>();
 
             CreateMap<Product, ProductDto>();
+           
             CreateMap<Product, ProductWithCategoryDto>();
             CreateMap<Product, ProductWithImagesDto>();
 

@@ -3,9 +3,21 @@ using Kuleli.Shop.Application.AutoMappings;
 using Kuleli.Shop.Application.Repostories;
 using Kuleli.Shop.Application.Services.Absraction.AccountService;
 using Kuleli.Shop.Application.Services.Absraction.CategoryService;
+using Kuleli.Shop.Application.Services.Absraction.CityService;
+using Kuleli.Shop.Application.Services.Absraction.OrderDetailService;
+using Kuleli.Shop.Application.Services.Absraction.OrderService;
+using Kuleli.Shop.Application.Services.Absraction.ProductImageService;
+using Kuleli.Shop.Application.Services.Absraction.ProductService;
 using Kuleli.Shop.Application.Services.Implementation.AccountService;
 using Kuleli.Shop.Application.Services.Implementation.CategoryService;
+using Kuleli.Shop.Application.Services.Implementation.CityService;
+using Kuleli.Shop.Application.Services.Implementation.Order;
+using Kuleli.Shop.Application.Services.Implementation.OrderDetail;
+using Kuleli.Shop.Application.Services.Implementation.Product;
+using Kuleli.Shop.Application.Services.Implementation.ProductImage;
 using Kuleli.Shop.Application.Validators.Categories;
+using Kuleli.Shop.Domain.Service.Abstraction;
+using Kuleli.Shop.Domain.Service.Implementation;
 using Kuleli.Shop.Domain.UWork;
 using Kuleli.Shop.Persistance.Context;
 using Kuleli.Shop.Persistance.Repositories;
@@ -43,7 +55,7 @@ builder.Services.AddDbContext<KuleliGalleryContext>(opt =>
     opt.UseSqlServer(builder.Configuration.GetConnectionString("KuleliConnection"));
 });
 
-//Repository Registiration
+//Repository Registiraction
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 //UnitOfWork Registiration
@@ -52,6 +64,13 @@ builder.Services.AddScoped<IUnitwork, UnitWork>();
 //Business Service Registiration
 builder.Services.AddScoped<ICategoryServices, CategoryService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<ILoggedUserService, LoggedUserService>();
+builder.Services.AddScoped<ICityService, CityService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductImageService, ProductImageService>();
+builder.Services.AddScoped<IProductImageService, ProductImageService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IOrderDetailService, OrderDetailService>();
 
 
 //typeof seklinde de yazabilirdik ama 

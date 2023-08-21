@@ -1,4 +1,5 @@
 ﻿using Kuleli.Shop.Application.Model.Dtos.CategoryDtos;
+using Kuleli.Shop.Application.Model.Dtos.Products;
 
 namespace Kuleli.Shop.Application.Model.Dtos.OrderDetails
 {

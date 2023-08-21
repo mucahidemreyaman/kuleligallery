@@ -98,7 +98,7 @@ namespace Kuleli.Shop.Application.Services.Implementation.AccountService
             //Kullanıcı yoksa hata fırlat.
             if (existsAccount is null)
             {
-                throw new NotFoundException($"{loginVM.Username} kullanıcı adına sahip kullanıcı bulunamadı ye da parola hatalıdır.");
+                throw new NotFoundException($"{loginVM.Username} KULLANICI ADINA SAHIP BIR KULLAINICI BULUNAMADI YA DA PAROLA HATALIDIR.");
             }
 
             //Token expire (sona erme süresi) süresini belirle
