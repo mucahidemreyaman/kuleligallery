@@ -13,35 +13,35 @@ namespace Kuleli.Shop.Application.Validators.Accounts
         public UpdateUserValidator()
         {
             RuleFor(x => x.Id)
-                .NotEmpty().WithMessage("Güncellenecek kullanıcı kimlik numarası gönderilmelidir.");
+                .NotEmpty().WithMessage("GUNCELLENECEK KULLANICI KIMLIK NUMARASI GIRILMELIDIR.");
 
             RuleFor(x => x.CityId)
-                .NotEmpty().WithMessage("Geçerli bir il bilgisi gönderilmelidir.")
-                .LessThan(82).WithMessage("Geçersiz bir il numarası gönderildi.");
+                .NotEmpty().WithMessage("GECERLI BIR IL GIRINIZ.")
+                .LessThan(82).WithMessage("GECERSIZ BIR IL NUMARASI GIRILDU");
 
             RuleFor(x => x.IdentityNumber)
-                .NotEmpty().WithMessage("Tc kimlik boş olamaz.")
-                .MaximumLength(11).WithMessage("Tc kimlik numarası 11 karakterden büyük olamaz.")
-                .MinimumLength(11).WithMessage("Tc kimlik numarası 11 karakterden küçük olamaz.");
+                .NotEmpty().WithMessage("TC KIMLIK NUMARASI BOS BIRAKILAMAZ.")
+                .MaximumLength(11).WithMessage("TC KIMLIK NUMARASI 11 KARAKTERDEN BUYUK OLAMAZ.")
+                .MinimumLength(11).WithMessage("Tc kimlik numarası 11  KARAKTERDEN KUCUK OLAMAZ.");
 
             RuleFor(x => x.Name)
-                .NotEmpty().WithMessage("Ad bilgisi boş olamaz.")
-                .MaximumLength(30).WithMessage("Ad bilgisi 30 karakterden büyük olamaz.");
+                .NotEmpty().WithMessage("AD BILGISI BOS OLAMAZ.")
+                .MaximumLength(30).WithMessage("AD BILGISI 30 KARAKTERDEN BUYUK OLAMAZ.");
 
             RuleFor(x => x.Surname)
-                .NotEmpty().WithMessage("Soyad bilgisi boş olamaz.")
-                .MaximumLength(30).WithMessage("Soyad bilgisi 30 karakterden büyük olamaz.");
+                .NotEmpty().WithMessage("SOYAD BILGISI BOS OLAMAZ.")
+                .MaximumLength(30).WithMessage("SOYAD BILGISI 30 KARAKTERDEN BUYUK OLAMAZ.");
 
             RuleFor(x => x.Phone)
-                .NotEmpty().WithMessage("Telefon no bilgisi boş olamaz.")
-                .MaximumLength(13).WithMessage("Telefon no bilgisi 13 karakterden büyük olamaz.");
+                .NotEmpty().WithMessage("TELEFON NO BILGISI BOS BIRAKILAMAZ.")
+                .MaximumLength(13).WithMessage("TELEFON NO BILGISI 13 KARAKTERDEN BUYUK OLAMAZ.");
 
             RuleFor(x => x.Birtdate)
-                .NotEmpty().WithMessage("Doğum tarihi bilgisi boş olamaz.");
+                .NotEmpty().WithMessage("DOGUM TARIHI BILGISI BOS BIRAKILAMAZ.");
 
             RuleFor(x => x.Gender)
-                .NotEmpty().WithMessage("Cinsiyet bilgisi boş olamaz.")
-                .IsInEnum().WithMessage("Cinsiyet bilgisi geçerli değil. (1 veya 2 olabilir.)");
+                .NotEmpty().WithMessage("CINSIYET BILGISI BOS BIRAKILAMAZ.")
+                .IsInEnum().WithMessage("CINSIYET BILGISI GECERLI DEGIL (1 veya 2 SECILMELIDIR.)");
 
         }
     }

@@ -1,10 +1,10 @@
 using Kuleli.Shop.Application.Model.Dtos.CategoryDtos;
 using Kuleli.Shop.Application.Model.RequestModels.CategoryModels;
-using Kuleli.Shop.Application.Services.Absraction.CategoryService;
+using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Wrapper;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KuleliGallery.APİ.Controller.CategoryController
+namespace KuleliGallery.APİ.Controller
 {
 
     //Endpoint url : [ControllerRoute]/[ActionRoute]

@@ -2,7 +2,7 @@
 using Kuleli.Shop.Application.Model.RequestModels.CategoryModels;
 using Kuleli.Shop.Application.Wrapper;
 
-namespace Kuleli.Shop.Application.Services.Absraction.CategoryService
+namespace Kuleli.Shop.Application.Services.Absraction
 {
     public interface ICategoryServices
     {

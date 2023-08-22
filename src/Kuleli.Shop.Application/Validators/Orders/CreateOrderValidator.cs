@@ -12,8 +12,8 @@ namespace Kuleli.Shop.Application.Validators.Orders
                 .GreaterThan(0).WithMessage("MUSTERI NUMARASI SIFIRDAN BUYUK OLMALIDIR.");
 
             RuleFor(x => x.AddressId)
-                .NotEmpty().WithMessage("ADRES KIMLIK NUMARASI BOS OLAMAZ")
-                .GreaterThan(0).WithMessage("ADRES KIMLIK NUMARASI SIFIRDAN BUYUK BIR SAYI OLMALIDIR");
+                .NotEmpty().WithMessage("ADRES KIMLIK NUMARASI BOS OLAMAZ.")
+                .GreaterThan(0).WithMessage("ADRES KIMLIK NUMARASI SIFIRDAN BUYUK BIR SAYI OLMALIDIR.");
         }
     }
 }

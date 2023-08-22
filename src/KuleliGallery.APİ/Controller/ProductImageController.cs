@@ -1,10 +1,10 @@
 ﻿using Kuleli.Shop.Application.Model.Dtos.ProductImages;
 using Kuleli.Shop.Application.Model.RequestModels.ProductImages;
-using Kuleli.Shop.Application.Services.Absraction.ProductImageService;
+using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Wrapper;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KuleliGallery.APİ.Controller.ProductImageContoller
+namespace KuleliGallery.APİ.Controller
 {
 
     [ApiController]

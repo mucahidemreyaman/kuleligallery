@@ -7,7 +7,7 @@ namespace Kuleli.Shop.Persistance.Mapping
     public abstract class BaseEntityMapping<T> : IEntityTypeConfiguration<T> where T: BaseEntity
     {
 
-        //
+        
 
         public abstract void ConfigureDerivedEntityMapping(EntityTypeBuilder<T> builder);
 
@@ -18,7 +18,7 @@ namespace Kuleli.Shop.Persistance.Mapping
             builder.Property(x => x.Id)
                 .HasColumnName("ID")
                 .HasColumnOrder(1);
-
+            //Intercepter araya girici metod
             ConfigureDerivedEntityMapping(builder);
 
             builder.Property(x => x.IsDeleted)

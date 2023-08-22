@@ -1,10 +1,10 @@
 using Kuleli.Shop.Application.Model.RequestModels.AccountModels;
-using Kuleli.Shop.Application.Services.Absraction.AccountService;
+using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Wrapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KuleliGallery.APİ.Controller.CategoryController
+namespace KuleliGallery.APİ.Controller
 {
 
     //Endpoint url : [ControllerRoute]/[ActionRoute]

@@ -1,5 +1,6 @@
 ﻿using Kuleli.Shop.Domain.Common;
 using Kuleli.Shop.Domain.Entities;
+using Kuleli.Shop.Domain.Service.Abstraction;
 using Kuleli.Shop.Persistance.Mapping;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,7 +8,12 @@ namespace Kuleli.Shop.Persistance.Context
 {
     public class KuleliGalleryContext : DbContext
     {
-        public KuleliGalleryContext(DbContextOptions<KuleliGalleryContext> options) : base(options) { }
+
+        private readonly ILoggedUserService _loggedUserService;
+        public KuleliGalleryContext(DbContextOptions<KuleliGalleryContext> options, ILoggedUserService loggedUserService) : base(options)
+        {
+           _loggedUserService = loggedUserService;
+        }
 
         #region DbSet
         public DbSet<Account> Accounts { get; set; }
@@ -20,6 +26,9 @@ namespace Kuleli.Shop.Persistance.Context
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductComment> ProductComments { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
+
+       
+
 
         #endregion
 

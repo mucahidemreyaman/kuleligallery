@@ -16,6 +16,7 @@ namespace Kuleli.Shop.Persistance.Mapping
 
             builder.Property(x => x.IdentityNumber)
               .HasColumnName("IDENTITY_NUMBER")
+              .HasColumnType("nchar(11)")
               .IsRequired()
               .HasColumnOrder(4);
 

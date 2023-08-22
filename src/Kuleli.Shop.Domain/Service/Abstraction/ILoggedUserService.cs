@@ -1,10 +1,4 @@
 ﻿using Kuleli.Shop.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Kuleli.Shop.Domain.Service.Abstraction
 {
     public interface ILoggedUserService

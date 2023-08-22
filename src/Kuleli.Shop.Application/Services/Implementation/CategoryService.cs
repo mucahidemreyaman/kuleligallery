@@ -4,14 +4,14 @@ using Kuleli.Shop.Application.Behaviors;
 using Kuleli.Shop.Application.Exceptions;
 using Kuleli.Shop.Application.Model.Dtos.CategoryDtos;
 using Kuleli.Shop.Application.Model.RequestModels.CategoryModels;
-using Kuleli.Shop.Application.Services.Absraction.CategoryService;
+using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Validators.Categories;
 using Kuleli.Shop.Application.Wrapper;
 using Kuleli.Shop.Domain.Entities;
 using Kuleli.Shop.Domain.UWork;
 using Microsoft.EntityFrameworkCore;
 
-namespace Kuleli.Shop.Application.Services.Implementation.CategoryService
+namespace Kuleli.Shop.Application.Services.Implementation
 {
     public class CategoryService : ICategoryServices
     {
@@ -100,7 +100,7 @@ namespace Kuleli.Shop.Application.Services.Implementation.CategoryService
             //await _context.SaveChangesAsync();
             //yansıtılan kategorinin idsi oluyor ve idyi getirmemizi sağlıyor...!!!
             //Db kayıt isleminden sonra herhangi bir sıkıntı yoksa bu kategori icin atanan entity geri doner...!!!
-             _db.GetRepository<Category>().Add(categoryEntity);
+            _db.GetRepository<Category>().Add(categoryEntity);
             await _db.CommitAsync();
 
             result.Data = categoryEntity.Id;
@@ -130,7 +130,7 @@ namespace Kuleli.Shop.Application.Services.Implementation.CategoryService
             // veritabaninda kayitli kategoriyi getirelim.
             //var existsCategory = await _context.Categories.FindAsync(deleteCategoryViewModel.Id);
             //var existsCategory = await _repository.GetById(deleteCategoryViewModel.Id);
-             _db.GetRepository<Category>().Delete(deleteCategoryViewModel.Id);
+            _db.GetRepository<Category>().Delete(deleteCategoryViewModel.Id);
             await _db.CommitAsync();
             // silindi olarak isaretleyelim.
             //existsCategory.IsDeleted = true;

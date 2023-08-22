@@ -2,7 +2,7 @@
 using Kuleli.Shop.Application.Model.RequestModels.OrderDetails;
 using Kuleli.Shop.Application.Wrapper;
 
-namespace Kuleli.Shop.Application.Services.Absraction.OrderDetailService
+namespace Kuleli.Shop.Application.Services.Absraction
 {
     public interface IOrderDetailService
     {

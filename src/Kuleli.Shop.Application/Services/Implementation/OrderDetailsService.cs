@@ -4,21 +4,21 @@ using Kuleli.Shop.Application.Behaviors;
 using Kuleli.Shop.Application.Exceptions;
 using Kuleli.Shop.Application.Model.Dtos.OrderDetails;
 using Kuleli.Shop.Application.Model.RequestModels.OrderDetails;
-using Kuleli.Shop.Application.Services.Absraction.OrderDetailService;
+using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Validators.OrderDetails;
 using Kuleli.Shop.Application.Wrapper;
 using Kuleli.Shop.Domain.Entities;
 using Kuleli.Shop.Domain.UWork;
 using Microsoft.EntityFrameworkCore;
 
-namespace Kuleli.Shop.Application.Services.Implementation.OrderDetail
+namespace Kuleli.Shop.Application.Services.Implementation
 {
-    public class OrderDetailService : IOrderDetailService
+    public class OrderDetailsService : IOrderDetailService
     {
         private readonly IUnitwork _unitWork;
         private readonly IMapper _mapper;
 
-        public OrderDetailService(IUnitwork unitWork, IMapper mapper)
+        public OrderDetailsService(IUnitwork unitWork, IMapper mapper)
         {
             _unitWork = unitWork;
             _mapper = mapper;

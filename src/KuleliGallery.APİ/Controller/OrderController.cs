@@ -1,12 +1,12 @@
 ﻿using Kuleli.Shop.Application.Model.Dtos.Orders;
 using Kuleli.Shop.Application.Model.RequestModels.Order;
 using Kuleli.Shop.Application.Model.RequestModels.Orders;
-using Kuleli.Shop.Application.Services.Absraction.OrderService;
+using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Wrapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KuleliGallery.APİ.Controller.OrderController
+namespace KuleliGallery.APİ.Controller
 {
 
     [ApiController]

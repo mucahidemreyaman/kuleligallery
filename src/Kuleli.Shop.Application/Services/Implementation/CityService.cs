@@ -4,13 +4,13 @@ using Kuleli.Shop.Application.Exceptions;
 using Kuleli.Shop.Application.Model.Dtos.CityDto;
 using Kuleli.Shop.Application.Model.RequestModels.CittModels;
 using Kuleli.Shop.Application.Model.RequestModels.CityModels;
-using Kuleli.Shop.Application.Services.Absraction.CityService;
+using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Wrapper;
 using Kuleli.Shop.Domain.Entities;
 using Kuleli.Shop.Domain.UWork;
 using Kuleli.Shop.Persistance.UWork;
 
-namespace Kuleli.Shop.Application.Services.Implementation.CityService
+namespace Kuleli.Shop.Application.Services.Implementation
 {
     public class CityService : ICityService
     {

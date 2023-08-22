@@ -4,7 +4,7 @@ using Kuleli.Shop.Application.Behaviors;
 using Kuleli.Shop.Application.Exceptions;
 using Kuleli.Shop.Application.Model.Dtos.AccountDtos;
 using Kuleli.Shop.Application.Model.RequestModels.AccountModels;
-using Kuleli.Shop.Application.Services.Absraction.AccountService;
+using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Validators.Accounts;
 using Kuleli.Shop.Application.Wrapper;
 using Kuleli.Shop.Domain.Entities;
@@ -15,7 +15,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Kuleli.Shop.Application.Services.Implementation.AccountService
+namespace Kuleli.Shop.Application.Services.Implementation
 {
     public class AccountService : IAccountService
     {
@@ -61,7 +61,7 @@ namespace Kuleli.Shop.Application.Services.Implementation.AccountService
             if (!cityExists)
             {
                 throw new NotFoundException($"{createUserVM.CityId} NUMARALI BİR İL BULUNAMADI.");
-                
+
             }
 
 

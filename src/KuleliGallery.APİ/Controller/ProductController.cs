@@ -1,12 +1,12 @@
 ﻿using Kuleli.Shop.Application.Model.Dtos.Products;
 using Kuleli.Shop.Application.Model.RequestModels.Products;
-using Kuleli.Shop.Application.Services.Absraction.ProductService;
+using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Wrapper;
 using Kuleli.Shop.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KuleliGallery.APİ.Controller.ProductController
+namespace KuleliGallery.APİ.Controller
 {
 
     [ApiController]

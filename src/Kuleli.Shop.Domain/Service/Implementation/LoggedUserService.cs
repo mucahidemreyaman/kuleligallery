@@ -1,12 +1,7 @@
 ﻿using Kuleli.Shop.Domain.Entities;
 using Kuleli.Shop.Domain.Service.Abstraction;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Kuleli.Shop.Domain.Service.Implementation
 {

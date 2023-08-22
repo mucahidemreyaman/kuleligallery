@@ -2,7 +2,7 @@
 using Kuleli.Shop.Application.Model.RequestModels.ProductImages;
 using Kuleli.Shop.Application.Wrapper;
 
-namespace Kuleli.Shop.Application.Services.Absraction.ProductImageService
+namespace Kuleli.Shop.Application.Services.Absraction
 {
     public interface IProductImageService
     {

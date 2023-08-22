@@ -1,5 +1,4 @@
 ﻿using ArxOne.MrAdvice.Advice;
-using Microsoft.Identity.Client;
 using Serilog;
 using System.Diagnostics;
 
@@ -21,7 +20,7 @@ namespace Kuleli.Shop.Application.Behaviors
 
             var totalDuration = watch.Elapsed.TotalSeconds;
 
-         Log.Information($"{context.TargetName} metodu {totalDuration}");
+         Log.Information($"{context.TargetName} METODU  {totalDuration} SANİYEDE TAMAMLANDI.");
         }
     }
 }

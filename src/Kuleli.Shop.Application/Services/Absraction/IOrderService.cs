@@ -3,12 +3,12 @@ using Kuleli.Shop.Application.Model.RequestModels.Order;
 using Kuleli.Shop.Application.Model.RequestModels.Orders;
 using Kuleli.Shop.Application.Wrapper;
 
-namespace Kuleli.Shop.Application.Services.Absraction.OrderService
+namespace Kuleli.Shop.Application.Services.Absraction
 {
     public interface IOrderService
     {
         #region Select
-        Task<Result<List<OrderDto>>> GetOrdersByCustomer(GetOrdersByCustomerVM getOrderByCustomerVM);
+        Task<Result<List<OrderDto>>> GetOrdersByCustomer(GetOrdersByCustomerVM getOrdersByCustomerVM);
 
         #endregion
 

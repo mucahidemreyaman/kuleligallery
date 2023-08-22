@@ -1,20 +1,8 @@
 using FluentValidation;
 using Kuleli.Shop.Application.AutoMappings;
 using Kuleli.Shop.Application.Repostories;
-using Kuleli.Shop.Application.Services.Absraction.AccountService;
-using Kuleli.Shop.Application.Services.Absraction.CategoryService;
-using Kuleli.Shop.Application.Services.Absraction.CityService;
-using Kuleli.Shop.Application.Services.Absraction.OrderDetailService;
-using Kuleli.Shop.Application.Services.Absraction.OrderService;
-using Kuleli.Shop.Application.Services.Absraction.ProductImageService;
-using Kuleli.Shop.Application.Services.Absraction.ProductService;
-using Kuleli.Shop.Application.Services.Implementation.AccountService;
-using Kuleli.Shop.Application.Services.Implementation.CategoryService;
-using Kuleli.Shop.Application.Services.Implementation.CityService;
-using Kuleli.Shop.Application.Services.Implementation.Order;
-using Kuleli.Shop.Application.Services.Implementation.OrderDetail;
-using Kuleli.Shop.Application.Services.Implementation.Product;
-using Kuleli.Shop.Application.Services.Implementation.ProductImage;
+using Kuleli.Shop.Application.Services.Absraction;
+using Kuleli.Shop.Application.Services.Implementation;
 using Kuleli.Shop.Application.Validators.Categories;
 using Kuleli.Shop.Domain.Service.Abstraction;
 using Kuleli.Shop.Domain.Service.Implementation;
@@ -23,15 +11,18 @@ using Kuleli.Shop.Persistance.Context;
 using Kuleli.Shop.Persistance.Repositories;
 using Kuleli.Shop.Persistance.UWork;
 using KuleliGallery.APÝ.Filters;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Serilog;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 //logging
 var configuration = new ConfigurationBuilder()
        .SetBasePath(Directory.GetCurrentDirectory())
        .AddJsonFile("appsettings.json")
-       .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", true)
        .Build();
 
 Log.Logger = new LoggerConfiguration()
@@ -45,9 +36,37 @@ builder.Services.AddControllers(opt =>
 {
     opt.Filters.Add(new ExceptionHandlerFilter());
 });
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "JwtTokenWithIdentity", Version = "v1", Description = "JwtTokenWithIdentity test app" });
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "Enter 'Bearer' [space] and then your valid token in the text input below.\r\n\r\nExample: \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\"",
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                            {
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.SecurityScheme,
+                                    Id = "Bearer"
+                                }
+                            },
+                            new string[] {}
+                    }
+                });
+});
+
+builder.Services.AddHttpContextAccessor();
 
 //DbContext Registiration
 builder.Services.AddDbContext<KuleliGalleryContext>(opt =>
@@ -70,7 +89,7 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductImageService, ProductImageService>();
 builder.Services.AddScoped<IProductImageService, ProductImageService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
-builder.Services.AddScoped<IOrderDetailService, OrderDetailService>();
+builder.Services.AddScoped<IOrderDetailService, OrderDetailsService>();
 
 
 //typeof seklinde de yazabilirdik ama 
@@ -82,6 +101,27 @@ builder.Services.AddAutoMapper(typeof(DomainToDto), typeof(ViewModelToDomain));
 
 //FluentValidation istekte gonderilen modele ait propertylerin istenen formatta destekleyip desteklemediðini anlamamýzý saðlar.
 builder.Services.AddValidatorsFromAssemblyContaining(typeof(CreateCategoryValidator));
+
+// JWT kimlik doðrulama servisini ekleme
+builder.Services.AddAuthentication(opt =>
+{
+    opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+    .AddJwtBearer(options =>
+    {
+        options.IncludeErrorDetails = true;
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"], // Tokený oluþturan tarafýn adresi
+            ValidAudience = builder.Configuration["Jwt:Audiance"], // Tokenýn kullanýlacaðý hedef adres
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SigningKey"])) // Gizli anahtar
+        };
+    });
 
 
 

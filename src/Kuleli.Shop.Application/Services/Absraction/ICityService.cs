@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kuleli.Shop.Application.Services.Absraction.CityService
+namespace Kuleli.Shop.Application.Services.Absraction
 {
     public interface ICityService
     {

@@ -1,9 +1,8 @@
-﻿using Kuleli.Shop.Application.Model.Dtos.ProductDto;
-using Kuleli.Shop.Application.Model.Dtos.Products;
+﻿using Kuleli.Shop.Application.Model.Dtos.Products;
 using Kuleli.Shop.Application.Model.RequestModels.Products;
 using Kuleli.Shop.Application.Wrapper;
 
-namespace Kuleli.Shop.Application.Services.Absraction.ProductService
+namespace Kuleli.Shop.Application.Services.Absraction
 {
     public interface IProductService
     {

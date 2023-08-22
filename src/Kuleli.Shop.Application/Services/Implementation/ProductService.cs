@@ -2,16 +2,16 @@
 using AutoMapper.QueryableExtensions;
 using Kuleli.Shop.Application.Behaviors;
 using Kuleli.Shop.Application.Exceptions;
-using Kuleli.Shop.Application.Model.Dtos.ProductDto;
 using Kuleli.Shop.Application.Model.Dtos.Products;
 using Kuleli.Shop.Application.Model.RequestModels.Products;
-using Kuleli.Shop.Application.Services.Absraction.ProductService;
+using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Validators.Products;
 using Kuleli.Shop.Application.Wrapper;
+using Kuleli.Shop.Domain.Entities;
 using Kuleli.Shop.Domain.UWork;
 using Microsoft.EntityFrameworkCore;
 
-namespace Kuleli.Shop.Application.Services.Implementation.Product
+namespace Kuleli.Shop.Application.Services.Implementation
 {
     public class ProductService : IProductService
     {
