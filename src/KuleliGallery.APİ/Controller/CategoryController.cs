@@ -13,9 +13,9 @@ namespace KuleliGallery.APİ.Controller
     [Route("category")]
     public class CategoryController : ControllerBase
     {
-        private readonly ICategoryServices _categoryServices;
+        private readonly ICategoryService _categoryServices;
 
-        public CategoryController(ICategoryServices categoryServices)
+        public CategoryController(ICategoryService categoryServices)
         {
             _categoryServices = categoryServices;
         }

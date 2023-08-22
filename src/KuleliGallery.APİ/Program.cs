@@ -12,6 +12,7 @@ using Kuleli.Shop.Persistance.Repositories;
 using Kuleli.Shop.Persistance.UWork;
 using KuleliGallery.APÝ.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -19,19 +20,22 @@ using Serilog;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-//logging
+
+//Logging
 var configuration = new ConfigurationBuilder()
-       .SetBasePath(Directory.GetCurrentDirectory())
-       .AddJsonFile("appsettings.json")
-       .Build();
+        .SetBasePath(Directory.GetCurrentDirectory())
+        .AddJsonFile("appsettings.json")
+        .Build();
 
 Log.Logger = new LoggerConfiguration()
-      .ReadFrom.Configuration(configuration)
-      .CreateLogger();
+        .ReadFrom.Configuration(configuration)
+        .CreateLogger();
 
-Log.Logger.Information("PROGRAM STARTED...");
+Log.Logger.Information("Program Started...");
+
 // Add services to the container.
 
+//ActionFilter registiration
 builder.Services.AddControllers(opt =>
 {
     opt.Filters.Add(new ExceptionHandlerFilter());
@@ -71,17 +75,18 @@ builder.Services.AddHttpContextAccessor();
 //DbContext Registiration
 builder.Services.AddDbContext<KuleliGalleryContext>(opt =>
 {
-    opt.UseSqlServer(builder.Configuration.GetConnectionString("KuleliConnection"));
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("AhlatciShop"));
 });
 
 //Repository Registiraction
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
+
 //UnitOfWork Registiration
 builder.Services.AddScoped<IUnitwork, UnitWork>();
 
 //Business Service Registiration
-builder.Services.AddScoped<ICategoryServices, CategoryService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<ILoggedUserService, LoggedUserService>();
 builder.Services.AddScoped<ICityService, CityService>();
@@ -91,16 +96,12 @@ builder.Services.AddScoped<IProductImageService, ProductImageService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IOrderDetailService, OrderDetailsService>();
 
-
-//typeof seklinde de yazabilirdik ama 
-//generic olmayan ifadeler icin bu kullaným daha dogrudur..
-
-
 //Automapper
 builder.Services.AddAutoMapper(typeof(DomainToDto), typeof(ViewModelToDomain));
 
-//FluentValidation istekte gonderilen modele ait propertylerin istenen formatta destekleyip desteklemediðini anlamamýzý saðlar.
+//FluentValidation Ýstekte gönderilen modele ait property'lerin istenen formatý destekleyip desteklemediðini anlamamýzý saðlar.
 builder.Services.AddValidatorsFromAssemblyContaining(typeof(CreateCategoryValidator));
+
 
 // JWT kimlik doðrulama servisini ekleme
 builder.Services.AddAuthentication(opt =>
@@ -124,8 +125,7 @@ builder.Services.AddAuthentication(opt =>
     });
 
 
-
-var app = builder.Build(); //Dependency Injectiona Unit of worku kurmadýgýmýz icin "https://prnt.sc/PFu1tEhN31Y7" hata alýrýz //
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -136,8 +136,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllers();
+
+//Kalýcý olarak saklanacak dosyalar için kayýt yeri ayarlanýyor.
+app.UseStaticFiles();
 
 app.Run();

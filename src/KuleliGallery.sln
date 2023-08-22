@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KuleliGallery.APİ", "Kulel
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kuleli.Gallery.Utilies", "Kuleli.Gallery.Utilies\Kuleli.Gallery.Utilies.csproj", "{8356F974-5FDE-4358-9BBC-D075AE8E2FD0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Presentation", "4-Presentation", "{0B48BF14-599F-42DF-A6AD-263B16D9001E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

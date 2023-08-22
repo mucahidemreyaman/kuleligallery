@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Kuleli.Shop.Application.Services.Implementation
 {
-    public class CategoryService : ICategoryServices
+    public class CategoryService : ICategoryService
     {
         private readonly IMapper _mapper;
         private readonly IUnitwork _db;

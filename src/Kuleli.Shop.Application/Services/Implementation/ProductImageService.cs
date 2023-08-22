@@ -10,6 +10,7 @@ using Kuleli.Shop.Application.Validators.ProductImages;
 using Kuleli.Shop.Application.Wrapper;
 using Kuleli.Shop.Domain.Entities;
 using Kuleli.Shop.Domain.UWork;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -20,10 +21,10 @@ namespace Kuleli.Shop.Application.Services.Implementation
     {
         private readonly IUnitwork _unitWork;
         private readonly IMapper _mapper;
-        private readonly IHostEnvironment _hostingEnvironment;
+        private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly IConfiguration _configuration;
 
-        public ProductImageService(IUnitwork unitWork, IMapper mapper, IHostEnvironment hostingEnvironment, IConfiguration configuration)
+        public ProductImageService(IUnitwork unitWork, IMapper mapper, IWebHostEnvironment hostingEnvironment, IConfiguration configuration)
         {
             _unitWork = unitWork;
             _mapper = mapper;
@@ -69,7 +70,7 @@ namespace Kuleli.Shop.Application.Services.Implementation
             }
             //Dosyanın ismi belirleniyor.
             var fileName = PathUtil.GenerateFileName(createProductImageVM.UploadedImage);
-            var filePath = Path.Combine(_hostingEnvironment., _configuration["Paths:ProductImages"], fileName);
+            var filePath = Path.Combine(_hostingEnvironment.WebRootPath, _configuration["Paths:ProductImages"], fileName);
             //Dosya fiziksel olarak kaydediliyor.
             using (FileStream fs = new FileStream(filePath, FileMode.Create))
             {

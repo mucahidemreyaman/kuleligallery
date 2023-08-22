@@ -97,6 +97,6 @@ namespace Kuleli.Shop.Persistance.Context
 
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
-
+        
     }
 }

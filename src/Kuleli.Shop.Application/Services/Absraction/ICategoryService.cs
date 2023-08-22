@@ -4,7 +4,7 @@ using Kuleli.Shop.Application.Wrapper;
 
 namespace Kuleli.Shop.Application.Services.Absraction
 {
-    public interface ICategoryServices
+    public interface ICategoryService
     {
         //Dto Servisin Disariya gönderdigi turler
         //VM= ViewModel demektir. Servisin disaridan aldigi parametlerdir.

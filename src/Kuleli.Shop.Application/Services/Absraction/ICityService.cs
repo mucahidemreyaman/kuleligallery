@@ -2,11 +2,6 @@
 using Kuleli.Shop.Application.Model.RequestModels.CittModels;
 using Kuleli.Shop.Application.Model.RequestModels.CityModels;
 using Kuleli.Shop.Application.Wrapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Kuleli.Shop.Application.Services.Absraction
 {
