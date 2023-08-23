@@ -1,5 +1,4 @@
 ﻿using Kuleli.Shop.Application.Model.Dtos.Orders;
-using Kuleli.Shop.Application.Model.RequestModels.Order;
 using Kuleli.Shop.Application.Model.RequestModels.Orders;
 using Kuleli.Shop.Application.Wrapper;
 

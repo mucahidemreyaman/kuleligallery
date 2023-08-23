@@ -1,4 +1,5 @@
 using FluentValidation;
+using Kuleli.Shop.Persistence.Context;
 using Kuleli.Shop.Application.AutoMappings;
 using Kuleli.Shop.Application.Repostories;
 using Kuleli.Shop.Application.Services.Absraction;
@@ -7,12 +8,11 @@ using Kuleli.Shop.Application.Validators.Categories;
 using Kuleli.Shop.Domain.Service.Abstraction;
 using Kuleli.Shop.Domain.Service.Implementation;
 using Kuleli.Shop.Domain.UWork;
-using Kuleli.Shop.Persistance.Context;
 using Kuleli.Shop.Persistance.Repositories;
 using Kuleli.Shop.Persistance.UWork;
 using KuleliGallery.APÝ.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.HttpOverrides;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -75,7 +75,7 @@ builder.Services.AddHttpContextAccessor();
 //DbContext Registiration
 builder.Services.AddDbContext<KuleliGalleryContext>(opt =>
 {
-    opt.UseSqlServer(builder.Configuration.GetConnectionString("AhlatciShop"));
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("KuleliConnection"));
 });
 
 //Repository Registiraction

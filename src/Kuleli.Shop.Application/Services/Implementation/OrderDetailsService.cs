@@ -25,12 +25,12 @@ namespace Kuleli.Shop.Application.Services.Implementation
         }
 
         [ValidationBehavior(typeof(GetOrderDetailsByOrderIdValidator))]
-        public async Task<Result<List<OrderDetailsDto>>> GetOrderDetailsByOrderId(GetOrderDetailsByOrderIdVM getByOrderIdVM)
+        public async Task<Result<List<OrderDetailDto>>> GetOrderDetailsByOrderId(GetOrderDetailsByOrderIdVM getByOrderIdVM)
         {
-            var result = new Result<List<OrderDetailsDto>>();
+            var result = new Result<List<OrderDetailDto>>();
 
             var orderDetailEntities = await _unitWork.GetRepository<ProductImage>().GetByFilterAsync(x => x.ProductId == getByOrderIdVM.OrderId);
-            var productImageDtos = await orderDetailEntities.ProjectTo<OrderDetailsDto>(_mapper.ConfigurationProvider).ToListAsync();
+            var productImageDtos = await orderDetailEntities.ProjectTo<OrderDetailDto>(_mapper.ConfigurationProvider).ToListAsync();
 
             result.Data = productImageDtos;
             return result;

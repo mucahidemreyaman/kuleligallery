@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using Kuleli.Shop.Application.Model.RequestModels.AccountModels;
-using Kuleli.Shop.Application.Model.RequestModels.CategoryModels;
-using Kuleli.Shop.Application.Model.RequestModels.CittModels;
-using Kuleli.Shop.Application.Model.RequestModels.CityModels;
-using Kuleli.Shop.Application.Model.RequestModels.Order;
-using Kuleli.Shop.Application.Model.RequestModels.OrderDetails;
+using Kuleli.Shop.Application.Model.RequestModels.Accounts;
+using Kuleli.Shop.Application.Model.RequestModels;
+using Kuleli.Shop.Application.Model.RequestModels.Cities;
+
 using Kuleli.Shop.Application.Model.RequestModels.Orders;
+using Kuleli.Shop.Application.Model.RequestModels.OrderDetails;
+
 using Kuleli.Shop.Application.Model.RequestModels.ProductImages;
 using Kuleli.Shop.Application.Model.RequestModels.Products;
 using Kuleli.Shop.Domain.Entities;

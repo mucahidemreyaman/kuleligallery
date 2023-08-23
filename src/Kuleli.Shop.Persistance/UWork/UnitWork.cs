@@ -1,9 +1,8 @@
 ﻿using Kuleli.Shop.Application.Repostories;
 using Kuleli.Shop.Domain.Common;
 using Kuleli.Shop.Domain.UWork;
-using Kuleli.Shop.Persistance.Context;
 using Kuleli.Shop.Persistance.Repositories;
-using Microsoft.Extensions.DependencyInjection;
+using Kuleli.Shop.Persistence.Context;
 
 namespace Kuleli.Shop.Persistance.UWork
 {

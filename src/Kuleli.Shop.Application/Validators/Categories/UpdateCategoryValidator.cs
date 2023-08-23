@@ -1,10 +1,5 @@
 ﻿using FluentValidation;
-using Kuleli.Shop.Application.Model.RequestModels.CategoryModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Kuleli.Shop.Application.Model.RequestModels;
 
 namespace Kuleli.Shop.Application.Validators.Categories
 {

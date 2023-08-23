@@ -1,14 +1,12 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Kuleli.Shop.Application.Exceptions;
-using Kuleli.Shop.Application.Model.Dtos.CityDto;
-using Kuleli.Shop.Application.Model.RequestModels.CittModels;
-using Kuleli.Shop.Application.Model.RequestModels.CityModels;
+using Kuleli.Shop.Application.Model.Dtos.Cities;
+using Kuleli.Shop.Application.Model.RequestModels.Cities;
 using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Wrapper;
 using Kuleli.Shop.Domain.Entities;
 using Kuleli.Shop.Domain.UWork;
-using Kuleli.Shop.Persistance.UWork;
 
 namespace Kuleli.Shop.Application.Services.Implementation
 {
@@ -17,7 +15,7 @@ namespace Kuleli.Shop.Application.Services.Implementation
         private readonly IMapper _mapper;
         private readonly IUnitwork _uwork;
 
-        public CityService(IMapper mapper, UnitWork uwork)
+        public CityService(IMapper mapper, IUnitwork uwork)
         {
             _mapper = mapper;
             _uwork = uwork;
@@ -72,7 +70,7 @@ namespace Kuleli.Shop.Application.Services.Implementation
             var cityById = await _uwork.GetRepository<City>().GetById(id);
             if (cityById is null)
             {
-                throw new NotFoundException($"{id} NUMARALI SEHİR BULUNAMADI.");
+                throw new NotFoundException($"{id} numaralı şehir bulunamadı.");
             }
 
             _uwork.GetRepository<City>().Delete(cityById);
@@ -88,13 +86,13 @@ namespace Kuleli.Shop.Application.Services.Implementation
             var cityIdExists = await _uwork.GetRepository<City>().AnyAsync(x => x.Id == updateCityVM.Id);
             if (!cityIdExists)
             {
-                throw new NotFoundException($"{updateCityVM.Id} NUMARALI SEHİR BULUNAMADI.");
+                throw new NotFoundException($"{updateCityVM.Id} numaralı şehir bulunamadı.");
             }
 
             var cityNameExists = await _uwork.GetRepository<City>().AnyAsync(x => x.Id != updateCityVM.Id && x.Name == updateCityVM.Name.ToUpper().Trim());
             if (cityNameExists)
             {
-                throw new AlreadyExistsException($"{updateCityVM.Name} ISMINDE SEHIR EKLENMISTIR.");
+                throw new AlreadyExistsException($"{updateCityVM.Name} isminde bir şehir eklenmiştir.");
             }
 
             var existsCityEntity = await _uwork.GetRepository<City>().GetById(updateCityVM.Id.Value);

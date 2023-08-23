@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Kuleli.Shop.Application.Model.RequestModels.AccountModels;
+using Kuleli.Shop.Application.Model.RequestModels.Accounts;
 
 namespace Kuleli.Shop.Application.Validators.Accounts
 {

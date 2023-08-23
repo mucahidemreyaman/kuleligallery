@@ -1,5 +1,5 @@
 ﻿using Kuleli.Shop.Domain.Entities;
-namespace Kuleli.Shop.Application.Model.RequestModels.AccountModels
+namespace Kuleli.Shop.Application.Model.RequestModels.Accounts
 {
     public class RegisterVM
     {

@@ -1,4 +1,4 @@
-﻿namespace Kuleli.Shop.Application.Model.RequestModels.Order
+﻿namespace Kuleli.Shop.Application.Model.RequestModels.Orders
 {
     public class CreateOrderVM
     {

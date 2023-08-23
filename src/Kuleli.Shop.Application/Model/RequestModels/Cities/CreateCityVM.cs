@@ -1,4 +1,4 @@
-﻿namespace Kuleli.Shop.Application.Model.RequestModels.CittModels
+﻿namespace Kuleli.Shop.Application.Model.RequestModels.Cities
 {
     public class CreateCityVM
     {

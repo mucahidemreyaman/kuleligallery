@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Kuleli.Shop.Application.Model.RequestModels.CityModels;
+using Kuleli.Shop.Application.Model.RequestModels.Cities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

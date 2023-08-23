@@ -1,4 +1,4 @@
-﻿namespace Kuleli.Shop.Application.Model.Dtos.CategoryDtos
+﻿namespace Kuleli.Shop.Application.Model.Dtos
 {
     public class CategoryDto
     {

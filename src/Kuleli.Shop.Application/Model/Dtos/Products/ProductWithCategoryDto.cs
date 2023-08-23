@@ -1,11 +1,4 @@
-﻿using Kuleli.Shop.Application.Model.Dtos.CategoryDtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Kuleli.Shop.Application.Model.Dtos.Products
+﻿namespace Kuleli.Shop.Application.Model.Dtos.Products
 {
     public class ProductWithCategoryDto
     {

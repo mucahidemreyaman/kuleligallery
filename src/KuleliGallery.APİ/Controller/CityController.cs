@@ -1,9 +1,7 @@
-﻿using Kuleli.Shop.Application.Model.Dtos.CityDto;
-using Kuleli.Shop.Application.Model.RequestModels.CittModels;
-using Kuleli.Shop.Application.Model.RequestModels.CityModels;
+﻿using Kuleli.Shop.Application.Model.Dtos.Cities;
+using Kuleli.Shop.Application.Model.RequestModels.Cities;
 using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Wrapper;
-using Kuleli.Shop.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

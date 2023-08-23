@@ -1,6 +1,6 @@
 ﻿using Kuleli.Shop.Application.Repostories;
 using Kuleli.Shop.Domain.Common;
-using Kuleli.Shop.Persistance.Context;
+using Kuleli.Shop.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 

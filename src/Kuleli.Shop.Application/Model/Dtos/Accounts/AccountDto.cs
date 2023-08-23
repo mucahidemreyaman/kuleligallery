@@ -1,9 +1,9 @@
-﻿using Kuleli.Shop.Application.Model.Dtos.CustomerDtos;
+﻿using Kuleli.Shop.Application.Model.Dtos.Customers;
 using Kuleli.Shop.Domain.Entities;
 
-namespace Kuleli.Shop.Application.Model.Dtos.AccountDtos
+namespace Kuleli.Shop.Application.Model.Dtos.Accounts
 {
-    public class AccountDtos
+    public class AccountDto
     {
         public int CustomerId { get; set; }
         public string Username { get; set; }

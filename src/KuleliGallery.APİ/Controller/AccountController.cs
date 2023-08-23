@@ -1,4 +1,4 @@
-using Kuleli.Shop.Application.Model.RequestModels.AccountModels;
+using Kuleli.Shop.Application.Model.RequestModels.Accounts;
 using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Wrapper;
 using Microsoft.AspNetCore.Authorization;

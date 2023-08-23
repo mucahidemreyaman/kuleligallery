@@ -3,7 +3,6 @@ using AutoMapper.QueryableExtensions;
 using Kuleli.Shop.Application.Behaviors;
 using Kuleli.Shop.Application.Exceptions;
 using Kuleli.Shop.Application.Model.Dtos.Orders;
-using Kuleli.Shop.Application.Model.RequestModels.Order;
 using Kuleli.Shop.Application.Model.RequestModels.Orders;
 using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Validators.Orders;

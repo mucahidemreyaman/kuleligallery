@@ -1,4 +1,4 @@
-﻿namespace Kuleli.Shop.Application.Model.RequestModels.AccountModels
+﻿namespace Kuleli.Shop.Application.Model.RequestModels.Accounts
 {
     public class LoginVM 
     {

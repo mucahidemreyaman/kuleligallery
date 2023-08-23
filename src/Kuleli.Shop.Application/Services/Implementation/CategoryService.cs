@@ -2,8 +2,8 @@
 using AutoMapper.QueryableExtensions;
 using Kuleli.Shop.Application.Behaviors;
 using Kuleli.Shop.Application.Exceptions;
-using Kuleli.Shop.Application.Model.Dtos.CategoryDtos;
-using Kuleli.Shop.Application.Model.RequestModels.CategoryModels;
+using Kuleli.Shop.Application.Model.Dtos;
+using Kuleli.Shop.Application.Model.RequestModels;
 using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Validators.Categories;
 using Kuleli.Shop.Application.Wrapper;

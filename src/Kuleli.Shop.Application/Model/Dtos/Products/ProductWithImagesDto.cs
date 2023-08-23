@@ -1,5 +1,4 @@
-﻿using Kuleli.Shop.Application.Model.Dtos.CategoryDtos;
-using Kuleli.Shop.Application.Model.Dtos.ProductImages;
+﻿using Kuleli.Shop.Application.Model.Dtos.ProductImages;
 
 namespace Kuleli.Shop.Application.Model.Dtos.Products
 {

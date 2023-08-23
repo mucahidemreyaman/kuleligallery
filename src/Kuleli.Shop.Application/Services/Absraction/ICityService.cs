@@ -1,6 +1,5 @@
-﻿using Kuleli.Shop.Application.Model.Dtos.CityDto;
-using Kuleli.Shop.Application.Model.RequestModels.CittModels;
-using Kuleli.Shop.Application.Model.RequestModels.CityModels;
+﻿using Kuleli.Shop.Application.Model.Dtos.Cities;
+using Kuleli.Shop.Application.Model.RequestModels.Cities;
 using Kuleli.Shop.Application.Wrapper;
 
 namespace Kuleli.Shop.Application.Services.Absraction

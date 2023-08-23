@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Kuleli.Shop.Application.Model.RequestModels.CittModels;
+using Kuleli.Shop.Application.Model.RequestModels.Cities;
 
 namespace Kuleli.Shop.Application.Validators.Cities
 {

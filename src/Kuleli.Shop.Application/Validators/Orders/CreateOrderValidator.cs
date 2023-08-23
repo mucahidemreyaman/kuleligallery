@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using Kuleli.Shop.Application.Model.RequestModels.Order;
+using Kuleli.Shop.Application.Model.RequestModels.Orders;
 
 namespace Kuleli.Shop.Application.Validators.Orders
 {

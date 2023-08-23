@@ -2,8 +2,8 @@
 using Kuleli.Gallery.Utilies;
 using Kuleli.Shop.Application.Behaviors;
 using Kuleli.Shop.Application.Exceptions;
-using Kuleli.Shop.Application.Model.Dtos.AccountDtos;
-using Kuleli.Shop.Application.Model.RequestModels.AccountModels;
+using Kuleli.Shop.Application.Model.Dtos.Accounts;
+using Kuleli.Shop.Application.Model.RequestModels.Accounts;
 using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Validators.Accounts;
 using Kuleli.Shop.Application.Wrapper;

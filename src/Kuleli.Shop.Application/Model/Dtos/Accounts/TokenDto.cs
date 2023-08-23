@@ -1,6 +1,6 @@
 ﻿using Kuleli.Shop.Domain.Entities;
 
-namespace Kuleli.Shop.Application.Model.Dtos.AccountDtos
+namespace Kuleli.Shop.Application.Model.Dtos.Accounts
 {
     public class TokenDto
     {   

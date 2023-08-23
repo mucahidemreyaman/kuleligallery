@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Kuleli.Shop.Application.Model.Dtos.AccountDtos;
-using Kuleli.Shop.Application.Model.Dtos.CategoryDtos;
-using Kuleli.Shop.Application.Model.Dtos.CityDto;
-using Kuleli.Shop.Application.Model.Dtos.CustomerDtos;
+using Kuleli.Shop.Application.Model.Dtos.Accounts;
+using Kuleli.Shop.Application.Model.Dtos;
+using Kuleli.Shop.Application.Model.Dtos.Cities;
+using Kuleli.Shop.Application.Model.Dtos.Customers;
 using Kuleli.Shop.Application.Model.Dtos.OrderDetails;
 using Kuleli.Shop.Application.Model.Dtos.Orders;
 using Kuleli.Shop.Application.Model.Dtos.ProductImages;
@@ -19,7 +19,8 @@ namespace Kuleli.Shop.Application.AutoMappings
 
             CreateMap<Customer, CustomerDto>();
 
-            CreateMap<Account, AccountDtos>();
+            CreateMap<Account, AccountDto>();
+
             CreateMap<City, CityDto>();
 
             CreateMap<Product, ProductDto>();
@@ -32,7 +33,7 @@ namespace Kuleli.Shop.Application.AutoMappings
 
             CreateMap<Order, OrderDto>();
 
-            CreateMap<OrderDetail, OrderDetailsDto>();
+            CreateMap<OrderDetail, OrderDetailDto>();
         }
     }
 }

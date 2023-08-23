@@ -1,6 +1,7 @@
 ﻿using Kuleli.Shop.Domain.Entities;
 
-namespace Kuleli.Shop.Application.Model.Dtos.CustomerDtos
+namespace Kuleli.Shop.Application.Model.Dtos.Customers
+
 {
     public class CustomerDto
     {
