@@ -50,14 +50,16 @@ namespace Kuleli.Shop.Application.Validators.Accounts
 
             RuleFor(x => x.Password)
                .NotEmpty().WithMessage("PAROLA BILGISI BOS OLAMAZ.")
-               .MaximumLength(10).WithMessage("PAROLA EN FAZLA 10 KARAKTER OLABILIR.");
+               .MaximumLength(16).WithMessage("PAROLA EN FAZLA 16 KARAKTER OLABILIR.");
 
             RuleFor(x => x.PasswordAgain)
              .NotEmpty().WithMessage("PAROLA TEKRAR BILGISI BOS OLAMAZ.")
-             .MaximumLength(10).WithMessage("PAROLA TEKRAR EN FAZLA 10 KARAKTER OLABILIR.");
+             .MaximumLength(16).WithMessage("PAROLA TEKRAR EN FAZLA 16 KARAKTER OLABILIR.");
 
             RuleFor(x => x.Password)
-                .Matches(x => x.PasswordAgain).WithMessage("PAROLA VE PAROLA TEKRAR BILGISI ESLESMIYOR.");
+                 .Equal(x => x.PasswordAgain)
+                 .When(x => !String.IsNullOrWhiteSpace(x.Password))
+                 .WithMessage("Parola ve parola tekrar bilgisi eşleşmiyor.");
 
 
 

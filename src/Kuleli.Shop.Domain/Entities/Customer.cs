@@ -27,13 +27,12 @@ namespace Kuleli.Shop.Domain.Entities
 
         //Sadece Üyelerin Siparis verebilmesini sağlamak icin account sınıfına iliski kurmak icin Navigation Property kullandım..
         public Account Account { get; set; }
-
+        public City City { get; set; }
         // Müsterinin birden fazla siparisi olabileceği icin NP kullanıldı..
-        public ICollection<Order> Orders { get; set; }
-    
+        public ICollection<Order> Orders { get; set; }    
         public ICollection<ProductComment> ProductComments { get; set; }
 
-        public City City { get; set; }
+       
 
     } 
 

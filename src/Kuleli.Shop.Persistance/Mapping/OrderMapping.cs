@@ -27,12 +27,7 @@ namespace Kuleli.Shop.Persistance.Mapping
 
             builder.Property(x => x.Status)
               .HasColumnName("ORDER_STATUS")
-              .HasColumnOrder(5);
-
-            builder.Property(x => x.DeliveryType)
-                .IsRequired()
-                .HasColumnName("DELIVERY_TYPE")
-                .HasColumnOrder(6);
+              .HasColumnOrder(5);          
 
             builder.HasOne(x => x.Customer)
                 .WithMany(x => x.Orders)

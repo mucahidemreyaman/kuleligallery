@@ -29,6 +29,7 @@ namespace Kuleli.Shop.Persistance.Mapping
 
             builder.Property(x => x.LastLoginDate)
                 .HasColumnName("LAST_LOGIN_DATE")
+                .IsRequired(false)
                 .HasColumnOrder(5);
 
             builder.Property(x => x.LastUserIp)
@@ -37,7 +38,7 @@ namespace Kuleli.Shop.Persistance.Mapping
                 .IsRequired(false)
                 .HasColumnOrder(6);
 
-            builder.Property(x => x.Role)
+            builder.Property(x => x.Role)                
                .HasColumnName("ROLE_ID")
                .HasColumnOrder(7);
 

@@ -8,13 +8,11 @@ namespace Kuleli.Shop.Persistance.Mapping
     {
         public override void ConfigureDerivedEntityMapping(EntityTypeBuilder<ProductComment> builder)
         {
-            builder.Property(x => x.ProductId)
-                   .IsRequired()                   
+            builder.Property(x => x.ProductId)                   
                    .HasColumnName("PRODUCT_ID")
                    .HasColumnOrder(2);
 
             builder.Property(x => x.CustomerId)
-                .IsRequired()
                 .HasColumnName("CUSTOMER_ID")
                 .HasColumnOrder(3);
 

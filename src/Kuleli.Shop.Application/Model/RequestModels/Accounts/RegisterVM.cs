@@ -3,7 +3,7 @@ namespace Kuleli.Shop.Application.Model.RequestModels.Accounts
 {
     public class RegisterVM
     {
-
+        public int CityId { get; set; }
         public string IdentityNumber { get; set; }
 
         public string Name { get; set; }
@@ -12,9 +12,7 @@ namespace Kuleli.Shop.Application.Model.RequestModels.Accounts
 
         public DateTime Birthday { get; set; }
 
-        public Gender Gender { get; set; }
-
-        public int CityId { get; set; }
+        public Gender Gender { get; set; }   
 
         public string Email { get; set; }
 

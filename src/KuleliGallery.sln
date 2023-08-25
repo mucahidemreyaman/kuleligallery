@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kuleli.Gallery.Utilies", "K
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Presentation", "4-Presentation", "{0B48BF14-599F-42DF-A6AD-263B16D9001E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KuleliGallery.Shop.UI", "KuleliGallery.Shop.UI\KuleliGallery.Shop.UI.csproj", "{369CC1D0-1570-44AB-B009-EC53E170836E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{8356F974-5FDE-4358-9BBC-D075AE8E2FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8356F974-5FDE-4358-9BBC-D075AE8E2FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8356F974-5FDE-4358-9BBC-D075AE8E2FD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{369CC1D0-1570-44AB-B009-EC53E170836E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{369CC1D0-1570-44AB-B009-EC53E170836E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{369CC1D0-1570-44AB-B009-EC53E170836E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{369CC1D0-1570-44AB-B009-EC53E170836E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +70,7 @@ Global
 		{921F5B83-24B9-4208-86DA-80FD2A07D075} = {86A50C9B-6842-40F7-90BD-EF6529778853}
 		{9E69DA0F-F8A9-4623-A27D-1C04D3F72199} = {BD4390BD-B42A-4CED-993E-9DC5502AF2F9}
 		{8356F974-5FDE-4358-9BBC-D075AE8E2FD0} = {28703FC6-8D68-4045-A74C-2EE50A23C50F}
+		{369CC1D0-1570-44AB-B009-EC53E170836E} = {0B48BF14-599F-42DF-A6AD-263B16D9001E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4213F9C0-8393-4685-AF21-C262F68F51DA}

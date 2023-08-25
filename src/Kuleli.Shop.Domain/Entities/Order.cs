@@ -7,13 +7,10 @@ namespace Kuleli.Shop.Domain.Entities
         public int CustomerId { get; set; }
 
         public int AddressId { get; set; }
-
-        public int OrderTime { get; set; }
+       
         public DateTime OrderDate { get; set; }
              
-        public OrderStatus Status { get; set; }
-
-        public DeliveryType DeliveryType { get; set; }
+        public OrderStatus Status { get; set; }       
 
         // Siparisin sadece bir müsteriye ait oldugunu belli etmek icin NP kullandım..
         public Customer Customer { get; set; }
@@ -33,10 +30,6 @@ namespace Kuleli.Shop.Domain.Entities
         CargoDelivered = 5,
         Complated = 6
     }
-    public enum DeliveryType
-    {
-        Address = 1,
-        ShoppingCentre = 2
-    }
+   
 
 }

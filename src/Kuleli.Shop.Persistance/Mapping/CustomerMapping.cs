@@ -39,6 +39,7 @@ namespace Kuleli.Shop.Persistance.Mapping
               .HasColumnType("nvarchar(100)");
 
             builder.Property(x => x.Phone)
+              .IsRequired()
               .HasColumnName("PHONE")
               .HasColumnType("nchar(13)")
               .HasColumnOrder(8);
@@ -56,7 +57,6 @@ namespace Kuleli.Shop.Persistance.Mapping
             builder.HasOne(x => x.City)
                 .WithMany(x => x.Customers)
                 .HasForeignKey(x => x.CityId)
-                .IsRequired(false)
                 .HasConstraintName("CUSTOMER_CITY_CITY_ID");
 
             builder.ToTable("CUSTOMERS");

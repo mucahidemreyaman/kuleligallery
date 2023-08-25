@@ -12,7 +12,6 @@ using Kuleli.Shop.Persistance.Repositories;
 using Kuleli.Shop.Persistance.UWork;
 using KuleliGallery.APÝ.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -43,7 +42,7 @@ builder.Services.AddControllers(opt =>
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "JwtTokenWithIdentity", Version = "v1", Description = "JwtTokenWithIdentity test app" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "KULELIGALLERYIDENTITY", Version = "v1", Description = "KULELIGALLERYIDENTITY test app" });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
     {
         Name = "Authorization",

@@ -8,12 +8,11 @@ namespace Kuleli.Gallery.Utilies
         //ASIMETRIK SIFRELEME
 
         /// <summary>
-        /// Gönderilen metni sifreler
+        /// Gönderilen metni şifreler.
         /// </summary>
-        /// <param name="key">Sifrelemede kulalnılacak anahtar</param>
-        /// <param name="plainText">Sifrelenecek metin</param>
+        /// <param name="key">Şifrelemede kullanılacak anahtar</param>
+        /// <param name="plainText">Şifrelenecek metin</param>
         /// <returns></returns>
-
         public static string EncryptString(string key, string plainText)
         {
             byte[] iv = new byte[16];
@@ -44,12 +43,11 @@ namespace Kuleli.Gallery.Utilies
         }
 
         /// <summary>
-        /// Sifrelenmis metni cözer
+        /// Şifrelenmiş metni çözer
         /// </summary>
-        /// <param name="key">Cözmek icin kullanılacak anahtar</param>
-        /// <param name="cipherText">Sifrelenmis metin</param>
+        /// <param name="key">Çözmek için kullanılacak anahtar</param>
+        /// <param name="cipherText">Şifrelenmiş metin</param>
         /// <returns></returns>
-
         public static string DecryptString(string key, string cipherText)
         {
             byte[] iv = new byte[16];

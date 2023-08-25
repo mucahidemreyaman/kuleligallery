@@ -9,7 +9,7 @@ namespace Kuleli.Shop.Domain.Entities
 
         public string Password { get; set; }
 
-        public DateTime LastLoginDate { get; set; }
+        public DateTime? LastLoginDate { get; set; }
 
         public string LastUserIp { get; set; }
         

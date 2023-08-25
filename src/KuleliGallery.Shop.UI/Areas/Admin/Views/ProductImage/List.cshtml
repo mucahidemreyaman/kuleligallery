@@ -1,0 +1,110 @@
+﻿@model IEnumerable<ProductImageDto>
+
+@inject IHttpContextAccessor _contextAccessor
+@inject IConfiguration _configuration
+
+<div class="container">
+    <div class="row">
+        @Html.ActionLink("Resim Ekle", "Create","ProductImage", new { Area="Admin", productId= _contextAccessor.HttpContext.Request.Query["productId"]}, 
+        new{@class="offset-8 col-4 btn btn-success mb-5"})
+    </div>
+</div>
+
+@{
+    if (Model!=null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Path)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Order)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsThumbnail)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="tr-@item.Id">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductId)
+                        </td>
+                        <td>
+                            <img src="@_configuration["Api:Url"]@item.Path" width="60" height="60">
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Order)
+                        </td>
+                        <td>
+                            @{
+                                if(item.IsThumbnail.HasValue && item.IsThumbnail.Value)
+                                {
+                                    <span>Manşet resmi</span>
+                                }
+                            }
+                        </td>
+                        <td>
+                            <a href="#" data-id="@item.Id" class="btn btn-danger btnDelete">Sil</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-warning" role="alert">
+           ŞU AN İÇİN ÜRÜNE AİT GÖRSEL BULUNAMADI.
+        </div>
+    }
+}
+
+
+@section Scripts{
+<script>
+
+    $().ready(function(){
+        $(".btnDelete").click(function(){
+            var id=$(this).attr('data-id')
+            console.log(id)
+            $.ajax({
+                type:"DELETE",
+                url:"/admin/productImage/delete/"+id,
+                dataType:"json",
+                contentType:"application/json;charset=utf-8",
+                success:function(response){
+                    console.log(response)
+                    if(response.success){
+                        var tdClassName="tr-"+id
+                        $("."+tdClassName).fadeOut('slow',function(){
+                            $(this).remove()
+                        })
+                    }else{
+                        alert(response.errors[0])
+                    }
+                },
+                error:function(response){
+                    alert('İstek esnasından sonucu taraflı bir hata oluştu.')
+                }
+            })
+        })
+    })
+
+</script>
+}
+

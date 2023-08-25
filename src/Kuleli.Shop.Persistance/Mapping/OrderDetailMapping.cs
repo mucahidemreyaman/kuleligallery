@@ -9,7 +9,6 @@ namespace Kuleli.Shop.Persistance.Mapping
         public override void ConfigureDerivedEntityMapping(EntityTypeBuilder<OrderDetail> builder)
         {
             builder.Property(x => x.OrderId)
-                .IsRequired()
                 .HasColumnName("ORDER_ID")
                 .HasColumnOrder(2);
 
