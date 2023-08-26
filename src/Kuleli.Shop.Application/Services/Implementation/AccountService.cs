@@ -110,6 +110,7 @@ namespace Kuleli.Shop.Application.Services.Implementation
 
             result.Data = new TokenDto
             {
+                Role= existsAccount.Role,
                 Token = tokenString,
                 ExpireDate = expireDate
             };
