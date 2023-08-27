@@ -4,7 +4,7 @@ using Kuleli.Shop.Application.Services.Absraction;
 using Kuleli.Shop.Application.Wrapper;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KuleliGallery.APİ.Controller
+namespace KuleliGallery.Api.Controller
 {
 
     [ApiController]

@@ -5,7 +5,7 @@ using Kuleli.Shop.Application.Wrapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KuleliGallery.APİ.Controller
+namespace KuleliGallery.Api.Controller
 {
 
     [ApiController]

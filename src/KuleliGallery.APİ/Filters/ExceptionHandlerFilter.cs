@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Serilog;
 
-namespace KuleliGallery.APİ.Filters
+namespace KuleliGallery.Api.Filters
 {
     public class ExceptionHandlerFilter : IExceptionFilter
     {

@@ -10,7 +10,7 @@ using Kuleli.Shop.Domain.Service.Implementation;
 using Kuleli.Shop.Domain.UWork;
 using Kuleli.Shop.Persistance.Repositories;
 using Kuleli.Shop.Persistance.UWork;
-using KuleliGallery.APÝ.Filters;
+using KuleliGallery.Api.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;

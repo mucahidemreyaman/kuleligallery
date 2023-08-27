@@ -1,5 +1,6 @@
 ﻿using KuleliGallery.Shop.UI.Models.Dtos;
 using KuleliGallery.Shop.UI.Models.Dtos.Products;
+using KuleliGallery.Shop.UI.Models.RequestModels;
 using KuleliGallery.Shop.UI.Models.RequestModels.Products;
 using KuleliGallery.Shop.UI.Models.Wrapper;
 using KuleliGallery.Shop.UI.Services.Abstraction;
@@ -82,6 +83,7 @@ namespace KuleliGallery.Shop.UI.Areas.Admin.Controllers
 
         }
 
+       
         [HttpGet]
         public async Task<IActionResult> List()
         {
@@ -101,6 +103,45 @@ namespace KuleliGallery.Shop.UI.Areas.Admin.Controllers
             {
                 return View(response.Data.Data);
             }
+
+             
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id)
+        {
+            ViewBag.Header = "Ürün İşlemleri";
+            ViewBag.Title = "Ürün Düzenle";
+
+            //ilgili kategoriyi bul ve View'e git
+            var response = await _restService.GetAsync<Result<ProductDto>>($"product/get/{id}");
+            if (response.Data != null)
+
+			{
+				if (response.StatusCode == HttpStatusCode.BadRequest)
+				{
+					ModelState.AddModelError("", response.Data.Errors[0]);
+					return View();
+				}
+				else // herşey yolunda
+				{
+					return RedirectToAction("List", "Product");
+				}
+
+			}
+            return View();
+
+        }
+       
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int id)
+        {
+            //api endpointi çağır
+            //category/delete/id
+
+            var response = await _restService.DeleteAsync<Result<int>>($"product/delete/{id}");
+
+            return Json(response.Data);
         }
     }
 }

@@ -5,7 +5,7 @@ using Kuleli.Shop.Application.Wrapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KuleliGallery.APİ.Controllers
+namespace KuleliGallery.Api.Controllers
 {
 
     //Endpoint url : [ControllerRoute]/[ActionRoute]

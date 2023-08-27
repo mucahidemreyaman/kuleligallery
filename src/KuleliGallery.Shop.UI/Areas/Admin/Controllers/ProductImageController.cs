@@ -5,7 +5,6 @@ using KuleliGallery.Shop.UI.Services.Abstraction;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
-using System.Text;
 
 namespace KuleliGallery.Shop.UI.Areas.Admin.Controllers
 {
@@ -61,7 +60,7 @@ namespace KuleliGallery.Shop.UI.Areas.Admin.Controllers
             //Gelen modelde yer alan ve şu an null olan ilgili property'ye dosya içeriği
             //base64 string olarak yazılır. Bu bilgiyi api bekliyor.
             productImageModel.UploadedImage = fileAsBase64String;
-
+            
             var formData = new Dictionary<string, string>
             {
                 {"ProductId",productImageModel.ProductId.ToString() },

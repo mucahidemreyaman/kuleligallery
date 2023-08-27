@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 namespace KuleliGallery.Shop.UI.Controllers
 {
-    [Authorize(Policy ="User")]
+    //[Authorize(Policy ="User")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

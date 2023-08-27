@@ -17,7 +17,7 @@ namespace Kuleli.Shop.Persistance.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.10")
+                .HasAnnotation("ProductVersion", "7.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -472,8 +472,8 @@ namespace Kuleli.Shop.Persistance.Migrations
                         .HasColumnName("UNIT_IN_STOCK")
                         .HasColumnOrder(5);
 
-                    b.Property<int>("UnitPrice")
-                        .HasColumnType("int")
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(18,2)")
                         .HasColumnName("UNIT_PRICE")
                         .HasColumnOrder(6);
 

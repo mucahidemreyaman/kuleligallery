@@ -39,9 +39,11 @@ namespace Kuleli.Shop.Application.AutoMappings
 
             //Product
             CreateMap<CreateProductVM, Product>()
-                .ForMember(x => x.Name, y => y.MapFrom(e => e.Name.Trim()));
+                .ForMember(x => x.Name, y => y.MapFrom(e => e.Name.Trim()))
+                .ForMember(x => x.ProductDetail, y => y.MapFrom(e => e.Detail.Trim()));
             CreateMap<UpdateProductVM, Product>()
-                .ForMember(x => x.Name, y => y.MapFrom(e => e.Name.Trim()));
+                .ForMember(x => x.Name, y => y.MapFrom(e => e.Name.Trim()))
+                .ForMember(x => x.ProductDetail, y => y.MapFrom(e => e.Detail.Trim()));
 
             //ProductImage
             CreateMap<CreateProductImageVM, ProductImage>();
